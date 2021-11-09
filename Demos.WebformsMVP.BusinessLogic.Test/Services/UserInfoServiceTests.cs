@@ -33,8 +33,8 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
                 IUserInfoService target = new UserInfoService();
                 bool includeAdmins = false;
                 IList<IUserInfo> result = target.GetAllUsers(includeAdmins);
+                //Assert
                 Assert.IsNotNull(result, "Method returned null!");
-                //TODO:Check that only non-admins where fetched
                 foreach (var item in result)
                 {
                     Assert.IsFalse(item.IsAdmin,"Admins were not supposed to be fetched!");

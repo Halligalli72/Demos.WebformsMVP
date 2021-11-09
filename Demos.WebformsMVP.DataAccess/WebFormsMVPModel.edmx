@@ -4,85 +4,85 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="WebformsMVPDemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Activity">
-          <Key>
-            <PropertyRef Name="UserProfileId" />
-            <PropertyRef Name="ActivityTypeId" />
-            <PropertyRef Name="ActivityDate" />
-          </Key>
-          <Property Name="UserProfileId" Type="int" Nullable="false" />
-          <Property Name="ActivityTypeId" Type="int" Nullable="false" />
-          <Property Name="OtherActivity" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ActivityDate" Type="datetime" Nullable="false" />
-          <Property Name="Duration" Type="int" Nullable="false" />
-          <Property Name="Score" Type="int" Nullable="false" />
-          <Property Name="Created" Type="datetime" Nullable="false" />
-          <Property Name="Updated" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ActivityType">
-          <Key>
-            <PropertyRef Name="ActivityTypeId" />
-          </Key>
-          <Property Name="ActivityTypeId" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="StepValue" Type="int" Nullable="false" />
-          <Property Name="IsActivated" Type="bit" Nullable="false" />
-          <Property Name="Created" Type="datetime" Nullable="false" />
-          <Property Name="Updated" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UserProfile">
-          <Key>
-            <PropertyRef Name="UserProfileId" />
-          </Key>
-          <Property Name="UserProfileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Team" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Department" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsAdmin" Type="bit" Nullable="false" />
-          <Property Name="IsPublic" Type="bit" Nullable="false" />
-          <Property Name="Created" Type="datetime" Nullable="false" />
-          <Property Name="Updated" Type="datetime" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_Activity_ActivityType">
-          <End Role="ActivityType" Type="Self.ActivityType" Multiplicity="1" />
-          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ActivityType">
-              <PropertyRef Name="ActivityTypeId" />
-            </Principal>
-            <Dependent Role="Activity">
-              <PropertyRef Name="ActivityTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Activity_UserProfile">
-          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
-          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserProfile">
-              <PropertyRef Name="UserProfileId" />
-            </Principal>
-            <Dependent Role="Activity">
-              <PropertyRef Name="UserProfileId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="WebformsMVPDemoModelStoreContainer">
-          <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ActivityType" EntityType="Self.ActivityType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Activity_ActivityType" Association="Self.FK_Activity_ActivityType">
-            <End Role="ActivityType" EntitySet="ActivityType" />
-            <End Role="Activity" EntitySet="Activity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Activity_UserProfile" Association="Self.FK_Activity_UserProfile">
-            <End Role="UserProfile" EntitySet="UserProfile" />
-            <End Role="Activity" EntitySet="Activity" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="WebformsMVPDemoModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="WebformsMVPDemoModelStoreContainer">
+    <EntitySet Name="Activity" EntityType="WebformsMVPDemoModel.Store.Activity" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ActivityType" EntityType="WebformsMVPDemoModel.Store.ActivityType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserProfile" EntityType="WebformsMVPDemoModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Activity_ActivityType" Association="WebformsMVPDemoModel.Store.FK_Activity_ActivityType">
+      <End Role="ActivityType" EntitySet="ActivityType" />
+      <End Role="Activity" EntitySet="Activity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activity_UserProfile" Association="WebformsMVPDemoModel.Store.FK_Activity_UserProfile">
+      <End Role="UserProfile" EntitySet="UserProfile" />
+      <End Role="Activity" EntitySet="Activity" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="UserProfileId" />
+      <PropertyRef Name="ActivityTypeId" />
+      <PropertyRef Name="ActivityDate" />
+    </Key>
+    <Property Name="UserProfileId" Type="int" Nullable="false" />
+    <Property Name="ActivityTypeId" Type="int" Nullable="false" />
+    <Property Name="OtherActivity" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ActivityDate" Type="datetime" Nullable="false" />
+    <Property Name="Duration" Type="int" Nullable="false" />
+    <Property Name="Score" Type="int" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActivityType">
+    <Key>
+      <PropertyRef Name="ActivityTypeId" />
+    </Key>
+    <Property Name="ActivityTypeId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="StepValue" Type="int" Nullable="false" />
+    <Property Name="IsActivated" Type="bit" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserProfileId" />
+    </Key>
+    <Property Name="UserProfileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Team" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Department" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="IsPublic" Type="bit" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Activity_ActivityType">
+    <End Role="ActivityType" Type="WebformsMVPDemoModel.Store.ActivityType" Multiplicity="1" />
+    <End Role="Activity" Type="WebformsMVPDemoModel.Store.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActivityType">
+        <PropertyRef Name="ActivityTypeId" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="ActivityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activity_UserProfile">
+    <End Role="UserProfile" Type="WebformsMVPDemoModel.Store.UserProfile" Multiplicity="1" />
+    <End Role="Activity" Type="WebformsMVPDemoModel.Store.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfile">
+        <PropertyRef Name="UserProfileId" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="UserProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebformsMVPDemoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -171,52 +171,51 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WebformsMVPDemoModelStoreContainer" CdmEntityContainer="WebformsMVPDemoEntities">
-          <EntitySetMapping Name="Activity">
-            <EntityTypeMapping TypeName="WebformsMVPDemoModel.Activity">
-              <MappingFragment StoreEntitySet="Activity">
-                <ScalarProperty Name="Updated" ColumnName="Updated" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="Score" ColumnName="Score" />
-                <ScalarProperty Name="Duration" ColumnName="Duration" />
-                <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
-                <ScalarProperty Name="OtherActivity" ColumnName="OtherActivity" />
-                <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
-                <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ActivityType">
-            <EntityTypeMapping TypeName="WebformsMVPDemoModel.ActivityType">
-              <MappingFragment StoreEntitySet="ActivityType">
-                <ScalarProperty Name="Updated" ColumnName="Updated" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="IsActivated" ColumnName="IsActivated" />
-                <ScalarProperty Name="StepValue" ColumnName="StepValue" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserProfile">
-            <EntityTypeMapping TypeName="WebformsMVPDemoModel.UserProfile">
-              <MappingFragment StoreEntitySet="UserProfile">
-                <ScalarProperty Name="Updated" ColumnName="Updated" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
-                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
-                <ScalarProperty Name="Department" ColumnName="Department" />
-                <ScalarProperty Name="Team" ColumnName="Team" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebformsMVPDemoModelStoreContainer" CdmEntityContainer="WebformsMVPDemoEntities">
+    <EntitySetMapping Name="Activity">
+      <EntityTypeMapping TypeName="IsTypeOf(WebformsMVPDemoModel.Activity)">
+        <MappingFragment StoreEntitySet="Activity">
+          <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+          <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
+          <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
+          <ScalarProperty Name="OtherActivity" ColumnName="OtherActivity" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivityType">
+      <EntityTypeMapping TypeName="IsTypeOf(WebformsMVPDemoModel.ActivityType)">
+        <MappingFragment StoreEntitySet="ActivityType">
+          <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StepValue" ColumnName="StepValue" />
+          <ScalarProperty Name="IsActivated" ColumnName="IsActivated" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfile">
+      <EntityTypeMapping TypeName="IsTypeOf(WebformsMVPDemoModel.UserProfile)">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -230,7 +229,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
