@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WebUI.master.cs" Inherits="Demos.WebformsMVP.WebUI.Master.WebUI" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link type="text/css" href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="../Content/WebUI.css" rel="stylesheet" />
+    <script type="text/javascript" src="../Scripts/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../Scripts/bootstrap-datepicker.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="../Views/StartPage.aspx">Web UI</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">User
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="../Views/RegisterUser.aspx">Register</a></li>
+                  <li><a href="../Views/Login.aspx">Login</a></li>
+                  <li><a href="../Views/UserProfile.aspx">View profile</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Activities
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="../Views/RegisterActivity.aspx">Register</a></li>
+                  <li><a href="../Views/ActivityList.aspx?selection=own">Your own</a></li>
+                  <li><a href="../Views/ActivityList.aspx?selection=team">Your teams</a></li>
+                  <li><a href="../Views/ActivityList.aspx?selection=department">Your departments</a></li>
+                </ul>
+            </li>
+        </ul>
+      </div>
+    </nav>
+    <form id="form1" runat="server">
+        <div id="maincontentpanel">
+            <asp:ContentPlaceHolder ID="maincontent" runat="server">
+        
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <asp:ContentPlaceHolder ID="footer" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>

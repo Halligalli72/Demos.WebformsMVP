@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="06b4255acc034d3daf753a935cf7c3dc" Name="Diagram1">
+        <EntityTypeShape EntityType="WebformsMVPDemoModel.Activity" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="WebformsMVPDemoModel.ActivityType" Width="1.5" PointX="6" PointY="1.125" />
+        <EntityTypeShape EntityType="WebformsMVPDemoModel.UserProfile" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="WebformsMVPDemoModel.FK_Activity_ActivityType" />
+        <AssociationConnector Association="WebformsMVPDemoModel.FK_Activity_UserProfile" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
