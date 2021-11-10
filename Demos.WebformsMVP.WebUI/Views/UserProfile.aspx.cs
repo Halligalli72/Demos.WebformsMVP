@@ -53,7 +53,7 @@ namespace Demos.WebformsMVP.WebUI.Views
             {
                 LoggedInUser = null; //reset
                 _presenter.HandleLogoutUser();
-                Response.Redirect("StartPage.aspx");
+                Response.Redirect("StartPage.aspx", true);
             }
             catch (Exception ex)
             {

@@ -1,11 +1,8 @@
-﻿using Demos.WebformsMVP.BusinessLogic;
-using Demos.WebformsMVP.BusinessLogic.Interfaces;
+﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Presenters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Demos.WebformsMVP.WebUI.Views
@@ -103,7 +100,7 @@ namespace Demos.WebformsMVP.WebUI.Views
 
         public void RedirectAfterSaveOK()
         {
-            Response.Redirect("ActivityList.aspx?selection=own", true);
+            Response.Redirect("ActivityList.aspx?selection=own", false);
         }
 
         public void InitAvailableActivities(IList<IActivityType> types)
@@ -127,7 +124,7 @@ namespace Demos.WebformsMVP.WebUI.Views
 
         public void RedirectToLoginView()
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("Login.aspx", true);
         }
 
 

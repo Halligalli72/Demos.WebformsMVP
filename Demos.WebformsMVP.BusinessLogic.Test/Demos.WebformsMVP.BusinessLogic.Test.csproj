@@ -65,8 +65,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Services\ActivityServiceTests.cs" />
+    <Compile Include="Services\ActivityTypeServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ActivityServiceTests.cs" />
     <Compile Include="Services\UserInfoServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>

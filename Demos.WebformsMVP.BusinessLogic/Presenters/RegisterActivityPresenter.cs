@@ -47,7 +47,6 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
                 act.UserProfileId = View.LoggedInUser.ID;
                 act.ActivityDate = DateTime.Parse(View.ActivityDateInput);
                 act.ActivityTypeId = View.SelectedActivityIdInput;
-                //act.ActivityType=_activityTypeService.GetByKey(View.SelectedActivityIdInput);
                 act.OtherActivity = View.OtherActivityNameInput;
                 act.Duration = View.DurationInput;
                 _activityService.Save(act);
