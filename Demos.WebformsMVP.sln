@@ -1,26 +1,28 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.WebformsMVP.WebUI", "Demos.WebformsMVP.WebUI\Demos.WebformsMVP.WebUI.csproj", "{61B5385E-1AF6-4E6E-820A-79E002345B9E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.WebformsMVP.BusinessLogic", "Demos.WebformsMVP.BusinessLogic\Demos.WebformsMVP.BusinessLogic.csproj", "{DE25BF3F-CEE3-47DC-9F33-791048501B59}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User Interface", "User Interface", "{C5B58F3C-B126-4AB3-A667-C76798F394F8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.WebformsMVP.DataAccess", "Demos.WebformsMVP.DataAccess\Demos.WebformsMVP.DataAccess.csproj", "{150E2AED-5CB9-43B9-B399-BDDE43016C77}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{AFDF8318-16A5-43F1-8BB1-FC4D2F67D976}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{63DB908F-B592-44A2-A966-EAD3BD16BBCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.WebformsMVP.BusinessLogic.Test", "Demos.WebformsMVP.BusinessLogic.Test\Demos.WebformsMVP.BusinessLogic.Test.csproj", "{B00A3FC9-E21C-4EFC-A330-4A2AD10D20B1}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{98F11D93-E852-4111-8674-14FA88A14670}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.WebformsMVP.DataAccess", "src\Demos.WebformsMVP.DataAccess\Demos.WebformsMVP.DataAccess.csproj", "{150E2AED-5CB9-43B9-B399-BDDE43016C77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.WebformsMVP.BusinessLogic", "src\Demos.WebformsMVP.BusinessLogic\Demos.WebformsMVP.BusinessLogic.csproj", "{DE25BF3F-CEE3-47DC-9F33-791048501B59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AFD3AC9D-1BD1-4539-8861-86E681458445}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.WebformsMVP.BusinessLogic.Test", "tests\Demos.WebformsMVP.BusinessLogic.Test\Demos.WebformsMVP.BusinessLogic.Test.csproj", "{B00A3FC9-E21C-4EFC-A330-4A2AD10D20B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.WebformsMVP.WebUI", "src\Demos.WebformsMVP.WebUI\Demos.WebformsMVP.WebUI.csproj", "{61B5385E-1AF6-4E6E-820A-79E002345B9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,31 +30,31 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{61B5385E-1AF6-4E6E-820A-79E002345B9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61B5385E-1AF6-4E6E-820A-79E002345B9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61B5385E-1AF6-4E6E-820A-79E002345B9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61B5385E-1AF6-4E6E-820A-79E002345B9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE25BF3F-CEE3-47DC-9F33-791048501B59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE25BF3F-CEE3-47DC-9F33-791048501B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE25BF3F-CEE3-47DC-9F33-791048501B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE25BF3F-CEE3-47DC-9F33-791048501B59}.Release|Any CPU.Build.0 = Release|Any CPU
 		{150E2AED-5CB9-43B9-B399-BDDE43016C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{150E2AED-5CB9-43B9-B399-BDDE43016C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{150E2AED-5CB9-43B9-B399-BDDE43016C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{150E2AED-5CB9-43B9-B399-BDDE43016C77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE25BF3F-CEE3-47DC-9F33-791048501B59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE25BF3F-CEE3-47DC-9F33-791048501B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE25BF3F-CEE3-47DC-9F33-791048501B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE25BF3F-CEE3-47DC-9F33-791048501B59}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B00A3FC9-E21C-4EFC-A330-4A2AD10D20B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B00A3FC9-E21C-4EFC-A330-4A2AD10D20B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B00A3FC9-E21C-4EFC-A330-4A2AD10D20B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B00A3FC9-E21C-4EFC-A330-4A2AD10D20B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61B5385E-1AF6-4E6E-820A-79E002345B9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61B5385E-1AF6-4E6E-820A-79E002345B9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61B5385E-1AF6-4E6E-820A-79E002345B9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61B5385E-1AF6-4E6E-820A-79E002345B9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{61B5385E-1AF6-4E6E-820A-79E002345B9E} = {C5B58F3C-B126-4AB3-A667-C76798F394F8}
-		{DE25BF3F-CEE3-47DC-9F33-791048501B59} = {63DB908F-B592-44A2-A966-EAD3BD16BBCD}
 		{150E2AED-5CB9-43B9-B399-BDDE43016C77} = {AFDF8318-16A5-43F1-8BB1-FC4D2F67D976}
-		{B00A3FC9-E21C-4EFC-A330-4A2AD10D20B1} = {63DB908F-B592-44A2-A966-EAD3BD16BBCD}
+		{DE25BF3F-CEE3-47DC-9F33-791048501B59} = {63DB908F-B592-44A2-A966-EAD3BD16BBCD}
+		{B00A3FC9-E21C-4EFC-A330-4A2AD10D20B1} = {AFD3AC9D-1BD1-4539-8861-86E681458445}
+		{61B5385E-1AF6-4E6E-820A-79E002345B9E} = {C5B58F3C-B126-4AB3-A667-C76798F394F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B0E84588-97D1-4E5A-9378-1B81BBE363AB}
