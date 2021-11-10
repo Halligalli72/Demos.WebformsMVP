@@ -1,12 +1,13 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Demos.WebformsMVP.BusinessLogic
 {
+    /// <summary>
+    /// Mapper.
+    /// Translates Database objects => Business objects
+    /// Translates Business objects => Database objects
+    /// </summary>
     public static class Translator
     {
         public static IUserInfo TranslateToBusinessObject(DataAccess.UserProfile dbobject)
