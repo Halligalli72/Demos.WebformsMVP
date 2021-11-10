@@ -37,7 +37,7 @@
     <Key>
       <PropertyRef Name="ActivityTypeId" />
     </Key>
-    <Property Name="ActivityTypeId" Type="int" Nullable="false" />
+    <Property Name="ActivityTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="StepValue" Type="int" Nullable="false" />
     <Property Name="IsActivated" Type="bit" Nullable="false" />
@@ -120,7 +120,7 @@
           <Key>
             <PropertyRef Name="ActivityTypeId" />
           </Key>
-          <Property Name="ActivityTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ActivityTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="StepValue" Type="Int32" Nullable="false" />
           <Property Name="IsActivated" Type="Boolean" Nullable="false" />

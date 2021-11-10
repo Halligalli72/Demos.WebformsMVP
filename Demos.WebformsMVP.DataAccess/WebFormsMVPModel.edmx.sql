@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/09/2021 19:52:58
+-- Date Created: 11/10/2021 18:42:31
 -- Generated from EDMX file: C:\Users\matfal\source\repos\GitHub\Halligalli72\Demos.WebformsMVP\Demos.WebformsMVP.DataAccess\WebFormsMVPModel.edmx
 -- --------------------------------------------------
 
@@ -57,7 +57,7 @@ GO
 
 -- Creating table 'ActivityType'
 CREATE TABLE [dbo].[ActivityType] (
-    [ActivityTypeId] int  NOT NULL,
+    [ActivityTypeId] int IDENTITY(1,1) NOT NULL,
     [Name] varchar(50)  NOT NULL,
     [StepValue] int  NOT NULL,
     [IsActivated] bit  NOT NULL,

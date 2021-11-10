@@ -17,9 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.WebformsMVP.BusinessLogic.Test", "Demos.WebformsMVP.BusinessLogic.Test\Demos.WebformsMVP.BusinessLogic.Test.csproj", "{B00A3FC9-E21C-4EFC-A330-4A2AD10D20B1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0EA92E84-7F5C-43C5-BF18-354B73A60BFD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{98F11D93-E852-4111-8674-14FA88A14670}"
 	ProjectSection(SolutionItems) = preProject
-		ReadMe.txt = ReadMe.txt
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
@@ -55,6 +55,6 @@ Global
 		{B00A3FC9-E21C-4EFC-A330-4A2AD10D20B1} = {63DB908F-B592-44A2-A966-EAD3BD16BBCD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A7E30257-11F6-4CC2-9723-5B7012ACC16C}
+		SolutionGuid = {B0E84588-97D1-4E5A-9378-1B81BBE363AB}
 	EndGlobalSection
 EndGlobal

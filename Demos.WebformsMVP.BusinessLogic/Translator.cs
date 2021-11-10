@@ -1,12 +1,13 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Demos.WebformsMVP.BusinessLogic
 {
+    /// <summary>
+    /// Mapper.
+    /// Translates Database objects => Business objects
+    /// Translates Business objects => Database objects
+    /// </summary>
     public static class Translator
     {
         public static IUserInfo TranslateToBusinessObject(DataAccess.UserProfile dbobject)
@@ -98,17 +99,28 @@ namespace Demos.WebformsMVP.BusinessLogic
             return dbObject;
         }
 
-        public static DataAccess.Activity TranslateToDatabaseObject(IActivity act)
+        public static DataAccess.ActivityType TranslateToDatabaseObject(IActivityType bo) 
+        {
+            DataAccess.ActivityType dbObject = new DataAccess.ActivityType();
+            dbObject.Name = bo.ActivityName;
+            dbObject.StepValue = bo.Steps;
+            dbObject.IsActivated = bo.IsActivated;
+            dbObject.Created = bo.Created;
+            dbObject.Updated = bo.Updated;
+            return dbObject;
+        }
+
+        public static DataAccess.Activity TranslateToDatabaseObject(IActivity bo)
         {
             DataAccess.Activity dbObject = new DataAccess.Activity();
-            dbObject.ActivityDate = act.ActivityDate;
-            dbObject.ActivityTypeId = act.ActivityTypeId;
-            dbObject.OtherActivity = act.OtherActivity;
-            dbObject.Duration = act.Duration;
-            dbObject.UserProfileId = act.UserProfileId;
-            dbObject.Score = act.Score;
-            dbObject.Created = act.Created;
-            dbObject.Updated = act.Updated;
+            dbObject.ActivityDate = bo.ActivityDate;
+            dbObject.ActivityTypeId = bo.ActivityTypeId;
+            dbObject.OtherActivity = bo.OtherActivity;
+            dbObject.Duration = bo.Duration;
+            dbObject.UserProfileId = bo.UserProfileId;
+            dbObject.Score = bo.Score;
+            dbObject.Created = bo.Created;
+            dbObject.Updated = bo.Updated;
             return dbObject;
         }
 

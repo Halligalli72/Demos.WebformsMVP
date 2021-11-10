@@ -19,6 +19,8 @@ namespace Demos.WebformsMVP.DataAccess
 
         IList<UserProfile> GetByTeamname(string teamname);
 
+        IList<UserProfile> GetByDepartment(string department);
+
         IList<UserProfile> GetAllRegularUsers();
 
         IList<UserProfile> GetAdminUsers();
@@ -81,7 +83,7 @@ namespace Demos.WebformsMVP.DataAccess
                 }
                 else
                 {
-                    throw new Exception("User with username '" + existingUsername + "' was not found!");
+                    throw new KeyNotFoundException($"Could not find user with username:{existingUsername}!");
                 }
             }
         }
@@ -93,6 +95,14 @@ namespace Demos.WebformsMVP.DataAccess
                 return demoDbContext.UserProfile.Where(up => up.Team.ToLower().Equals(teamname.ToLower())).ToList();
             }
         }
+        public IList<UserProfile> GetByDepartment(string department)
+        {
+            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
+            {
+                return demoDbContext.UserProfile.Where(up => up.Department.ToLower().Equals(department.ToLower())).ToList();
+            }
+        }
+
 
         public IList<string> GetRegistredTeamNames()
         {
@@ -118,5 +128,6 @@ namespace Demos.WebformsMVP.DataAccess
                 return demoDbContext.UserProfile.Where(up => up.IsAdmin.Equals(true)).ToList();
             }
         }
+
     }
 }

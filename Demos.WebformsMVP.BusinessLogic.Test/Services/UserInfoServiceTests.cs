@@ -14,10 +14,27 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
         {
             try
             {
+                //Arrange
                 IUserInfoService target = new UserInfoService();
                 IUserInfo newUser = Factory.CreateUserInfo();
+                newUser.UserName = "testuser";
+                newUser.Name = "User Testuser";
+                newUser.IsAdmin = false;
+                newUser.ResultsArePublic = true;
+                newUser.TeamName = "Test team";
+                newUser.Department = "Testing";
+
+                //Act
                 IUserInfo createdUser = target.CreateUser(newUser);
-                //TODO:Check that equal
+
+                //Assert
+                Assert.AreEqual(newUser.UserName,createdUser.UserName);
+                Assert.AreEqual(newUser.Name, createdUser.Name);
+                Assert.AreEqual(newUser.IsAdmin, createdUser.IsAdmin);
+                Assert.AreEqual(newUser.ResultsArePublic, createdUser.ResultsArePublic);
+                Assert.AreEqual(newUser.TeamName, createdUser.TeamName);
+                Assert.AreEqual(newUser.Department, createdUser.Department);
+
             }
             catch (Exception ex)
             {

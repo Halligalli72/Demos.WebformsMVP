@@ -10,7 +10,9 @@ namespace Demos.WebformsMVP.DataAccess
     /// </summary>
     public interface IActivityTypeRepository
     {
+        void CreateType(ActivityType newType);
         ActivityType GetByKey(int key);
+        ActivityType GetByName(string name);
         IList<ActivityType> GetAll(bool includeInactive);
     }
 
@@ -49,6 +51,24 @@ namespace Demos.WebformsMVP.DataAccess
             using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
             {
                 return demoDbContext.ActivityType.Where(at => at.ActivityTypeId.Equals(key)).FirstOrDefault();
+            }
+        }
+
+        public ActivityType GetByName(string name)
+        {
+            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
+            {
+                return demoDbContext.ActivityType.Where(at => at.Name.ToLower().Equals(name.ToLower())).FirstOrDefault();
+            }
+        }
+
+        public void CreateType(ActivityType newType)
+        {
+            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
+            {
+                newType.Created = newType.Updated = DateTime.Now;
+                demoDbContext.ActivityType.Add(newType);
+                demoDbContext.SaveChanges();
             }
         }
     }

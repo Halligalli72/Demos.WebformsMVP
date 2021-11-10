@@ -42,12 +42,20 @@ namespace Demos.WebformsMVP.BusinessLogic.Services
 
         public IList<IUserInfo> GetByDepartment(string department)
         {
-            throw new NotImplementedException();
+            var hits = _repo.GetByDepartment(department);
+            if (hits != null)
+                return Translator.TranslateToBusinessObject(hits);
+            else
+                return new List<IUserInfo>();
         }
 
         public IList<IUserInfo> GetByTeam(string teamname)
         {
-            throw new NotImplementedException();
+            var hits = _repo.GetByTeamname(teamname);
+            if (hits != null)
+                return Translator.TranslateToBusinessObject(hits);
+            else
+                return new List<IUserInfo>();
         }
 
         public IUserInfo GetByUsername(string username)
