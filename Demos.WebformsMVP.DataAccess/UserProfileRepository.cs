@@ -81,7 +81,7 @@ namespace Demos.WebformsMVP.DataAccess
                 }
                 else
                 {
-                    throw new Exception("User with username '" + existingUsername + "' was not found!");
+                    throw new KeyNotFoundException($"Could not find user with username:{existingUsername}!");
                 }
             }
         }

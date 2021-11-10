@@ -111,7 +111,7 @@ namespace Demos.WebformsMVP.DataAccess
                     demoDbContext.SaveChanges();
                 }
                 else
-                    throw new Exception("Could not find entity with keys");
+                    throw new KeyNotFoundException($"Could not find entity with keys, [userProfileId:{userProfileId} activityTypeId:{activityTypeId} activityDate:{activityDate}]");
             }
         }
 

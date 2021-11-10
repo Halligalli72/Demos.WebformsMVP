@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.WebformsMVP.WebUI", "Demos.WebformsMVP.WebUI\Demos.WebformsMVP.WebUI.csproj", "{61B5385E-1AF6-4E6E-820A-79E002345B9E}"
 EndProject
@@ -16,6 +16,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{63DB908F-B592-44A2-A966-EAD3BD16BBCD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.WebformsMVP.BusinessLogic.Test", "Demos.WebformsMVP.BusinessLogic.Test\Demos.WebformsMVP.BusinessLogic.Test.csproj", "{B00A3FC9-E21C-4EFC-A330-4A2AD10D20B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{79AC8647-A7CE-4D5F-A61C-1F649C342549}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,26 +54,7 @@ Global
 		{150E2AED-5CB9-43B9-B399-BDDE43016C77} = {AFDF8318-16A5-43F1-8BB1-FC4D2F67D976}
 		{B00A3FC9-E21C-4EFC-A330-4A2AD10D20B1} = {63DB908F-B592-44A2-A966-EAD3BD16BBCD}
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://mattiasfalt.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Demos.WebformsMVP.BusinessLogic\\Demos.WebformsMVP.BusinessLogic.csproj
-		SccProjectTopLevelParentUniqueName1 = Demos.WebformsMVP.sln
-		SccProjectName1 = Demos.WebformsMVP.BusinessLogic
-		SccLocalPath1 = Demos.WebformsMVP.BusinessLogic
-		SccProjectUniqueName2 = Demos.WebformsMVP.DataAccess\\Demos.WebformsMVP.DataAccess.csproj
-		SccProjectTopLevelParentUniqueName2 = Demos.WebformsMVP.sln
-		SccProjectName2 = Demos.WebformsMVP.DataAccess
-		SccLocalPath2 = Demos.WebformsMVP.DataAccess
-		SccProjectUniqueName3 = Demos.WebformsMVP.WebUI\\Demos.WebformsMVP.WebUI.csproj
-		SccProjectTopLevelParentUniqueName3 = Demos.WebformsMVP.sln
-		SccProjectName3 = Demos.WebformsMVP.WebUI
-		SccLocalPath3 = Demos.WebformsMVP.WebUI
-		SccProjectUniqueName4 = Demos.WebformsMVP.BusinessLogic.Test\\Demos.WebformsMVP.BusinessLogic.Test.csproj
-		SccProjectTopLevelParentUniqueName4 = Demos.WebformsMVP.sln
-		SccProjectName4 = Demos.WebformsMVP.BusinessLogic.Test
-		SccLocalPath4 = Demos.WebformsMVP.BusinessLogic.Test
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0E84588-97D1-4E5A-9378-1B81BBE363AB}
 	EndGlobalSection
 EndGlobal
