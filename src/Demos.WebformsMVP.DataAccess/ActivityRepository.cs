@@ -29,41 +29,38 @@ namespace Demos.WebformsMVP.DataAccess
 
     public class ActivityRepository : IActivityRepository
     {
+        private readonly IDbContext _dbCtx;
+
         /// <summary>
         /// Factory method
         /// </summary>
         /// <returns></returns>
-        public static IActivityRepository CreateInstance()
+        public static IActivityRepository CreateInstance(IDbContext dbCtx)
         {
-            return new ActivityRepository();
+            return new ActivityRepository(dbCtx);
         }
 
         /// <summary>
         /// Hide default constructor by making it private
         /// </summary>
-        private ActivityRepository() { }
+        private ActivityRepository(IDbContext dbCtx) 
+        {
+            _dbCtx = dbCtx ?? throw new ArgumentNullException(nameof(dbCtx));
+        }
 
         public void CreateActivity(Activity newActivity)
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
-            {
-                newActivity.Created = newActivity.Updated = DateTime.Now;
-                demoDbContext.Activity.Add(newActivity);
-                demoDbContext.SaveChanges();
-            }
+            newActivity.Created = newActivity.Updated = DateTime.Now;
+            _dbCtx.Set<Activity>().Add(newActivity);
+            _dbCtx.SaveChanges();
         }
 
         public Activity GetByKey(int userProfileId, int activityTypeId, DateTime activityDate)
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
-            {
-                return demoDbContext.Activity
-                    .Include("ActivityType")
-                    .Include("UserProfile")
-                    .Where(a => a.UserProfileId.Equals(userProfileId) && 
-                            a.ActivityTypeId.Equals(activityTypeId) && 
-                            a.ActivityDate.Equals(activityDate)).FirstOrDefault();
-            }
+            return _dbCtx.Set<Activity>()
+                .Where(a => a.UserProfileId.Equals(userProfileId) &&
+                        a.ActivityTypeId.Equals(activityTypeId) &&
+                        a.ActivityDate.Equals(activityDate)).FirstOrDefault();
         }
 
         public IList<Activity> GetAll(bool onlyPublic)
@@ -73,58 +70,40 @@ namespace Demos.WebformsMVP.DataAccess
 
         public IList<Activity> GetByTeamname(string teamname)
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
-            {
-                return demoDbContext.Activity
-                    .Include("ActivityType")
-                    .Include("UserProfile")
-                    .Where(a => a.UserProfile.Team.Trim().ToUpper().Equals(teamname.Trim().ToUpper()))
-                    .OrderBy(a => a.Created).ToList();
-            }
+            return _dbCtx.Set<Activity>()
+                .Where(a => a.UserProfile.Team.Trim().ToUpper().Equals(teamname.Trim().ToUpper()))
+                .OrderBy(a => a.Created).ToList();
         }
 
         public IList<Activity> GetByUserProfileId(int userprofileId)
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
-            {
-                return demoDbContext.Activity
-                    .Include("ActivityType")
-                    .Include("UserProfile")
-                    .Where(a => a.UserProfileId.Equals(userprofileId))
-                    .OrderBy(a => a.Created).ToList();
-            }
+            return _dbCtx.Set<Activity>()
+                .Where(a => a.UserProfileId.Equals(userprofileId))
+                .OrderBy(a => a.Created).ToList();
         }
 
 
         public void Delete(int userProfileId, int activityTypeId, DateTime activityDate)
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
-            {
-                var hit = demoDbContext.Activity
-                    .Where(a => a.UserProfileId.Equals(userProfileId) &&
-                            a.ActivityTypeId.Equals(activityTypeId) &&
-                            a.ActivityDate.Equals(activityDate)).FirstOrDefault();
+            var hit = _dbCtx.Set<Activity>()
+                .Where(a => a.UserProfileId.Equals(userProfileId) &&
+                        a.ActivityTypeId.Equals(activityTypeId) &&
+                        a.ActivityDate.Equals(activityDate)).FirstOrDefault();
 
-                if (hit != null)
-                {
-                    demoDbContext.Activity.Remove(hit);
-                    demoDbContext.SaveChanges();
-                }
-                else
-                    throw new KeyNotFoundException($"Could not find entity with keys, [userProfileId:{userProfileId} activityTypeId:{activityTypeId} activityDate:{activityDate}]");
+            if (hit != null)
+            {
+                _dbCtx.Set<Activity>().Remove(hit);
+                _dbCtx.SaveChanges();
             }
+            else
+                throw new KeyNotFoundException($"Could not find entity with keys, [userProfileId:{userProfileId} activityTypeId:{activityTypeId} activityDate:{activityDate}]");
         }
 
         public IList<Activity> GetByDepartment(string department)
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
-            {
-                return demoDbContext.Activity
-                    .Include("ActivityType")
-                    .Include("UserProfile")
-                    .Where(a => a.UserProfile.Department.Trim().ToUpper().Equals(department.Trim().ToUpper()))
-                    .OrderBy(a => a.Created).ToList();
-            }
+            return _dbCtx.Set<Activity>()
+                .Where(a => a.UserProfile.Department.Trim().ToUpper().Equals(department.Trim().ToUpper()))
+                .OrderBy(a => a.Created).ToList();
         }
     }
 

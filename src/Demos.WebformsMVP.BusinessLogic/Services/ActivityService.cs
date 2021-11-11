@@ -30,10 +30,12 @@ namespace Demos.WebformsMVP.BusinessLogic.Services
     {
         private DataAccess.IActivityRepository _repo = null;
 
-        public ActivityService()
+        public ActivityService(DataAccess.IDbContext dbCtx)
         {
-            _repo = DataAccess.ActivityRepository.CreateInstance();
+            _repo = DataAccess.ActivityRepository.CreateInstance(dbCtx);
         }
+
+        private ActivityService() { }
 
         public void Delete(IActivity activity)
         {

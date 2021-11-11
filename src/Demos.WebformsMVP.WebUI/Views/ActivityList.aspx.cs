@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Demos.WebformsMVP.BusinessLogic;
 using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Presenters;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Demos.WebformsMVP.WebUI.Views
@@ -15,7 +13,7 @@ namespace Demos.WebformsMVP.WebUI.Views
 
         public ActivityList()
         {
-            _presenter = new ActivityListPresenter(this);
+            _presenter = new ActivityListPresenter(new DataAccess.WebformsMVPDemoEntities(Constants.CONNECTION_STRING), this);
         }
 
         protected void Page_Load(object sender, EventArgs e)

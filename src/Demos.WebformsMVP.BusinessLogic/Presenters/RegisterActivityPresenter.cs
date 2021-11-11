@@ -1,10 +1,6 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Demos.WebformsMVP.BusinessLogic.Presenters
 {
@@ -17,7 +13,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
         public RegisterActivityPresenter(DataAccess.IDbContext dbCtx, IRegisterActivityView view)
         {
             _view = view;
-            _activityService = new ActivityService();
+            _activityService = new ActivityService(dbCtx);
             _activityTypeService = new ActivityTypeService(dbCtx);
         }
         public IRegisterActivityView View

@@ -1,7 +1,6 @@
 ﻿using Demos.WebformsMVP.BusinessLogic;
 using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Presenters;
-using Demos.WebformsMVP.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +15,7 @@ namespace Demos.WebformsMVP.WebUI.Views
 
         public RegisterActivity()
         {
-            _presenter = new RegisterActivityPresenter(new WebformsMVPDemoEntities(Constants.CONNECTION_STRING), this);
+            _presenter = new RegisterActivityPresenter(new DataAccess.WebformsMVPDemoEntities(Constants.CONNECTION_STRING), this);
         }
         protected void Page_Load(object sender, EventArgs e)
         {

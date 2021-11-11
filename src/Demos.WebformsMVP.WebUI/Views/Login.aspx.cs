@@ -1,7 +1,6 @@
 ﻿using Demos.WebformsMVP.BusinessLogic;
 using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Presenters;
-using Demos.WebformsMVP.DataAccess;
 using System;
 
 namespace Demos.WebformsMVP.WebUI.Views
@@ -12,7 +11,7 @@ namespace Demos.WebformsMVP.WebUI.Views
         //private string _suggestedUserName = string.Empty;
         public Login()
         {
-            _presenter = new LoginPresenter(new WebformsMVPDemoEntities(Constants.CONNECTION_STRING), this);
+            _presenter = new LoginPresenter(new DataAccess.WebformsMVPDemoEntities(Constants.CONNECTION_STRING), this);
         }
 
 

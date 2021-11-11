@@ -1,10 +1,5 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Demos.WebformsMVP.BusinessLogic.Presenters
 {
@@ -13,10 +8,10 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
         private IStartPageView _view;
         private IActivityService _service;
 
-        public StartPagePresenter(IStartPageView view)
+        public StartPagePresenter(DataAccess.IDbContext dbCtx, IStartPageView view)
         {
             _view = view;
-            _service = new ActivityService();
+            _service = new ActivityService(dbCtx);
         }
 
         public IStartPageView View
