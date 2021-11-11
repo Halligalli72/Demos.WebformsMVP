@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 /// <summary>
@@ -35,10 +33,13 @@ namespace Demos.WebformsMVP.BusinessLogic.Services
     public class UserInfoService : IUserInfoService
     {
         private DataAccess.IUserProfileRepository _repo = null; 
-        public UserInfoService()
+        
+        public UserInfoService(DataAccess.IDbContext dbCtx)
         {
-            _repo = DataAccess.UserProfileRepository.CreateInstance();
+            _repo = DataAccess.UserProfileRepository.CreateInstance(dbCtx);
         }
+
+        private UserInfoService() { }
 
         public IList<IUserInfo> GetByDepartment(string department)
         {

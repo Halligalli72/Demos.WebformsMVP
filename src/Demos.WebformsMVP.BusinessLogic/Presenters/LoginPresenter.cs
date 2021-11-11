@@ -1,10 +1,5 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Demos.WebformsMVP.BusinessLogic.Presenters
 {
@@ -13,10 +8,10 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
         private ILoginView _view;
         private IUserInfoService _service;
 
-        public LoginPresenter(ILoginView view)
+        public LoginPresenter(DataAccess.IDbContext dbCtx, ILoginView view)
         {
             _view = view;
-            _service = new UserInfoService();
+            _service = new UserInfoService(dbCtx);
         }
 
         public ILoginView View

@@ -33,100 +33,93 @@ namespace Demos.WebformsMVP.DataAccess
     /// </summary>
     public class UserProfileRepository: IUserProfileRepository
     {
+        private readonly IDbContext _dbCtx;
+
         /// <summary>
         /// Factory method
         /// </summary>
         /// <returns></returns>
-        public static IUserProfileRepository CreateInstance()
+        public static IUserProfileRepository CreateInstance(IDbContext dbCtx)
         {
-            return new UserProfileRepository();
+            return new UserProfileRepository(dbCtx);
         }
 
         /// <summary>
         /// Hide default constructor by making it private
         /// </summary>
-        private UserProfileRepository() { }
+        private UserProfileRepository(IDbContext dbCtx) 
+        {
+            _dbCtx = dbCtx ?? throw new ArgumentNullException(nameof(dbCtx));
+        }
 
         public UserProfile GetUserByUsername(string username)
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
-            {
-                return demoDbContext.UserProfile.Where(up => up.UserName.ToLower().Equals(username.ToLower())).FirstOrDefault();
-            }
+            return _dbCtx.Set<UserProfile>()
+                .Where(up => up.UserName.ToLower().Equals(username.ToLower()))
+                .FirstOrDefault();
         }
 
         public void CreateUser(UserProfile newUser)
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
-            {
-                newUser.IsAdmin = false;
-                newUser.Created = newUser.Updated = DateTime.Now;
-                demoDbContext.UserProfile.Add(newUser);
-                demoDbContext.SaveChanges();
-            }
+            newUser.IsAdmin = false;
+            newUser.Created = newUser.Updated = DateTime.Now;
+            _dbCtx.Set<UserProfile>().Add(newUser);
+            _dbCtx.SaveChanges();
         }
 
         public void UpdateUser(string existingUsername, UserProfile updatedUser)
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
+            UserProfile hit = _dbCtx.Set<UserProfile>().Where(up => up.UserName.Equals(existingUsername)).FirstOrDefault();
+            if (hit != null)
             {
-                UserProfile hit = demoDbContext.UserProfile.Where(up => up.UserName.Equals(existingUsername)).FirstOrDefault();
-                if (hit != null)
-                {
-                    hit.UserName = updatedUser.UserName;
-                    hit.Name = updatedUser.Name;
-                    hit.Team = updatedUser.Team;
-                    hit.Department = updatedUser.Department;
-                    hit.IsPublic = updatedUser.IsPublic;
-                    hit.Updated = DateTime.Now;
-                    demoDbContext.SaveChanges();
-                }
-                else
-                {
-                    throw new KeyNotFoundException($"Could not find user with username:{existingUsername}!");
-                }
+                hit.UserName = updatedUser.UserName;
+                hit.Name = updatedUser.Name;
+                hit.Team = updatedUser.Team;
+                hit.Department = updatedUser.Department;
+                hit.IsPublic = updatedUser.IsPublic;
+                hit.Updated = DateTime.Now;
+                _dbCtx.SaveChanges();
+            }
+            else
+            {
+                throw new KeyNotFoundException($"Could not find user with username:{existingUsername}!");
             }
         }
 
         public IList<UserProfile> GetByTeamname(string teamname)
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
-            {
-                return demoDbContext.UserProfile.Where(up => up.Team.ToLower().Equals(teamname.ToLower())).ToList();
-            }
+            return _dbCtx.Set<UserProfile>()
+                .Where(up => up.Team.ToLower().Equals(teamname.ToLower()))
+                .ToList();
         }
         public IList<UserProfile> GetByDepartment(string department)
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
-            {
-                return demoDbContext.UserProfile.Where(up => up.Department.ToLower().Equals(department.ToLower())).ToList();
-            }
+            return _dbCtx.Set<UserProfile>()
+                .Where(up => up.Department.ToLower().Equals(department.ToLower()))
+                .ToList();
         }
 
 
         public IList<string> GetRegistredTeamNames()
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
-            {
-                var result = demoDbContext.UserProfile.GroupBy(up => up.Team.ToLower()).Select(g => g.FirstOrDefault().Team);
-                return result.ToList();
-            }
+            var result = _dbCtx.Set<UserProfile>()
+                .GroupBy(up => up.Team.ToLower())
+                .Select(g => g.FirstOrDefault().Team);
+            return result.ToList();
         }
 
         public IList<UserProfile> GetAllRegularUsers()
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
-            {
-                return demoDbContext.UserProfile.Where(up => up.IsAdmin.Equals(false)).ToList();
-            }
+            return _dbCtx.Set<UserProfile>()
+                .Where(up => up.IsAdmin.Equals(false))
+                .ToList();
         }
 
         public IList<UserProfile> GetAdminUsers()
         {
-            using (WebformsMVPDemoEntities demoDbContext = new WebformsMVPDemoEntities())
-            {
-                return demoDbContext.UserProfile.Where(up => up.IsAdmin.Equals(true)).ToList();
-            }
+            return _dbCtx.Set<UserProfile>()
+                .Where(up => up.IsAdmin.Equals(true))
+                .ToList();
         }
 
     }

@@ -1,11 +1,9 @@
 ﻿using Demos.WebformsMVP.BusinessLogic;
 using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Presenters;
+using Demos.WebformsMVP.DataAccess;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Demos.WebformsMVP.WebUI.Views
@@ -16,7 +14,7 @@ namespace Demos.WebformsMVP.WebUI.Views
 
         public UserProfile()
         {
-            _presenter = new UserProfilePresenter(this);
+            _presenter = new UserProfilePresenter(new WebformsMVPDemoEntities(Constants.CONNECTION_STRING), this);
         }
 
 

@@ -215,6 +215,10 @@
       <Project>{de25bf3f-cee3-47dc-9f33-791048501b59}</Project>
       <Name>Demos.WebformsMVP.BusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Demos.WebformsMVP.DataAccess\Demos.WebformsMVP.DataAccess.csproj">
+      <Project>{150E2AED-5CB9-43B9-B399-BDDE43016C77}</Project>
+      <Name>Demos.WebformsMVP.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
