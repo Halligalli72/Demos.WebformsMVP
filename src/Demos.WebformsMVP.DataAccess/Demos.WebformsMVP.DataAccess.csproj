@@ -61,6 +61,8 @@
       <DependentUpon>WebFormsMVPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ActivityTypeRepository.cs" />
+    <Compile Include="ExtendedDbContext.cs" />
+    <Compile Include="IDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserProfile.cs">
       <DependentUpon>WebFormsMVPModel.tt</DependentUpon>
