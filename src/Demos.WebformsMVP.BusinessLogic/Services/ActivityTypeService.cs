@@ -26,9 +26,9 @@ namespace Demos.WebformsMVP.BusinessLogic.Services
     {
         private DataAccess.IActivityTypeRepository _repo = null;
 
-        public ActivityTypeService()
+        public ActivityTypeService(DataAccess.IDbContext dbCtx)
         {
-            _repo = DataAccess.ActivityTypeRepository.CreateInstance();
+            _repo = DataAccess.ActivityTypeRepository.CreateInstance(dbCtx);
         }
 
         public IActivityType Create(IActivityType activityType)

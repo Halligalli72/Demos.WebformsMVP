@@ -1,6 +1,7 @@
 ﻿using System;
 using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Services;
+using Demos.WebformsMVP.DataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Demos.WebformsMVP.BusinessLogic.Test.Services
@@ -8,13 +9,16 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
     [TestClass]
     public class ActivityTypeServiceTests
     {
+        //TODO: Use Moq to remove dependency against database
+        const string CONNECTION_STRING = "name=WebformsMVPDemoEntities";
+
         [TestMethod]
         public void CreateActivityTypeTest()
         {
             try
             {
                 //Arrange
-                IActivityTypeService target = new ActivityTypeService();
+                IActivityTypeService target = new ActivityTypeService(new WebformsMVPDemoEntities(CONNECTION_STRING));
                 IActivityType newAct = Factory.CreateActivityType();
                 newAct.ActivityName = "Other";
                 newAct.Steps = 0;

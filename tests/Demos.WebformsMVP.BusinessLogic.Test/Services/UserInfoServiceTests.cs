@@ -10,7 +10,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
     [TestClass]
     public class UserInfoServiceTests
     {
-        //TODO: Use Moq to abstract database
+        //TODO: Use Moq to remove dependency against database
         const string CONNECTION_STRING = "name=WebformsMVPDemoEntities";
 
         [TestMethod]

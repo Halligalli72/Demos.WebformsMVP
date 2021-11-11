@@ -14,11 +14,11 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
         private IActivityService _activityService;
         private IActivityTypeService _activityTypeService;
 
-        public RegisterActivityPresenter(IRegisterActivityView view)
+        public RegisterActivityPresenter(DataAccess.IDbContext dbCtx, IRegisterActivityView view)
         {
             _view = view;
             _activityService = new ActivityService();
-            _activityTypeService = new ActivityTypeService();
+            _activityTypeService = new ActivityTypeService(dbCtx);
         }
         public IRegisterActivityView View
         {
