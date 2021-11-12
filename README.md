@@ -18,4 +18,3 @@ Kontrollera innehållet i databasen med följande SQL:
 * SELECT * FROM Activity
 * SELECT * FROM ActivityType
 
-/Mattias Fält
