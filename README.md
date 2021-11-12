@@ -1,5 +1,5 @@
 # Demos.WebformsMVP
-Demonstrerar MVP pattern med web forms (MVP = Model-View-Presenter)
+Demonstrerar MVP pattern med web forms (Model-View-Presenter)
 ==================================================================================
 
 Lösningen demonstrerar hur ett MVP (Model-View-Presenter) pattern kan appliceras i Web Forms.  
