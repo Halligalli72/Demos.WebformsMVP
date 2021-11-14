@@ -1,5 +1,4 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
-using Demos.WebformsMVP.BusinessLogic.Services;
 using System;
 
 namespace Demos.WebformsMVP.BusinessLogic.Presenters
@@ -9,12 +8,13 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
         private IRegisterActivityView _view;
         private IActivityService _activityService;
         private IActivityTypeService _activityTypeService;
+        private const int _defaultDuration = 30;
 
-        public RegisterActivityPresenter(DataAccess.IDbContext dbCtx, IRegisterActivityView view)
+        public RegisterActivityPresenter(IRegisterActivityView view, IActivityService activitySvc, IActivityTypeService activityTypeSvc)
         {
             _view = view;
-            _activityService = new ActivityService(dbCtx);
-            _activityTypeService = new ActivityTypeService(dbCtx);
+            _activityService = activitySvc;
+            _activityTypeService = activityTypeSvc;
         }
         public IRegisterActivityView View
         {
@@ -29,7 +29,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
             View.UserName = View.LoggedInUser.UserName;
             View.ActivityDateInput = DateTime.Now.ToShortDateString();
             View.InitAvailableActivities(_activityTypeService.GetAll(false));
-            View.DurationInput = 30;
+            View.DurationInput = _defaultDuration;
         }
 
         public void HandleSaveAction()

@@ -34,9 +34,9 @@ namespace Demos.WebformsMVP.BusinessLogic.Services
     {
         private DataAccess.IUserProfileRepository _repo = null; 
         
-        public UserInfoService(DataAccess.IDbContext dbCtx)
+        public UserInfoService(DataAccess.IUserProfileRepository userProfileRepo)
         {
-            _repo = DataAccess.UserProfileRepository.CreateInstance(dbCtx);
+            _repo = userProfileRepo ?? throw new ArgumentNullException(nameof(userProfileRepo));
         }
 
         private UserInfoService() { }

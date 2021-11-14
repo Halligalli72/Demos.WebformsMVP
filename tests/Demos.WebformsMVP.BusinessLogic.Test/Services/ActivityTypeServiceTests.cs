@@ -9,8 +9,6 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
     [TestClass]
     public class ActivityTypeServiceTests
     {
-        //TODO: Use Moq to remove dependency against database
-        const string CONNECTION_STRING = "name=WebformsMVPDemoEntities";
 
         [TestMethod]
         public void CreateActivityTypeTest()
@@ -18,7 +16,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
             try
             {
                 //Arrange
-                IActivityTypeService target = new ActivityTypeService(new WebformsMVPDemoEntities(CONNECTION_STRING));
+                IActivityTypeService target = CreateTestTarget();
                 IActivityType newAct = Factory.CreateActivityType();
                 newAct.ActivityName = "Other";
                 newAct.Steps = 0;
@@ -36,7 +34,17 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
             {
                 Assert.Fail(ex.Message);
             }
+        }
 
+
+
+
+        private ActivityTypeService CreateTestTarget() 
+        {
+            //TODO: Use Moq to remove dependency against database
+            const string CONNECTION_STRING = "name=WebformsMVPDemoEntities";
+            var dbCtx = new WebformsMVPDemoEntities(CONNECTION_STRING);
+            return new ActivityTypeService(ActivityTypeRepository.CreateInstance(dbCtx));
         }
     }
 }

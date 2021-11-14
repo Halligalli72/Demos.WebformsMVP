@@ -10,8 +10,6 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
     [TestClass]
     public class UserInfoServiceTests
     {
-        //TODO: Use Moq to remove dependency against database
-        const string CONNECTION_STRING = "name=WebformsMVPDemoEntities";
 
         [TestMethod]
         public void CreateUserTest()
@@ -19,7 +17,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
             try
             {
                 //Arrange
-                IUserInfoService target = new UserInfoService(new WebformsMVPDemoEntities(CONNECTION_STRING));
+                IUserInfoService target = CreateTestTarget();
                 IUserInfo newUser = Factory.CreateUserInfo();
                 newUser.UserName = "testuser";
                 newUser.Name = "User Testuser";
@@ -51,7 +49,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
         {
             try
             {
-                IUserInfoService target = new UserInfoService(new WebformsMVPDemoEntities(CONNECTION_STRING));
+                IUserInfoService target = CreateTestTarget();
                 bool includeAdmins = false;
                 IList<IUserInfo> result = target.GetAllUsers(includeAdmins);
                 //Assert
@@ -73,7 +71,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
         {
             try
             {
-                IUserInfoService target = new UserInfoService(new WebformsMVPDemoEntities(CONNECTION_STRING));
+                IUserInfoService target = CreateTestTarget();
                 IList<IUserInfo> result = target.GetAdminUsers();
                 Assert.IsNotNull(result, "Method returned null!");
                 //TODO:Check that only admins where fetched
@@ -90,7 +88,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
         {
             try
             {
-                IUserInfoService target = new UserInfoService(new WebformsMVPDemoEntities(CONNECTION_STRING));
+                IUserInfoService target = CreateTestTarget();
                 string filter = "laban";
                 IList<IUserInfo> result = target.GetByTeam(filter);
                 Assert.IsNotNull(result,"Method returned null!");
@@ -107,7 +105,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
         {
             try
             {
-                IUserInfoService target = new UserInfoService(new WebformsMVPDemoEntities(CONNECTION_STRING));
+                IUserInfoService target = CreateTestTarget();
                 IList<string> result = target.GetAllTeamNames();
                 Assert.IsNotNull(result, "Method returned null!");
 
@@ -118,5 +116,15 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
             }
         }
 
+
+
+
+        private UserInfoService CreateTestTarget()
+        {
+            //TODO: Use Moq to remove dependency against database
+            const string CONNECTION_STRING = "name=WebformsMVPDemoEntities";
+            var dbCtx = new WebformsMVPDemoEntities(CONNECTION_STRING);
+            return new UserInfoService(UserProfileRepository.CreateInstance(dbCtx));
+        }
     }
 }

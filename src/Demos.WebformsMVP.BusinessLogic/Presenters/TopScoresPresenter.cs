@@ -1,5 +1,4 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
-using Demos.WebformsMVP.BusinessLogic.Services;
 
 namespace Demos.WebformsMVP.BusinessLogic.Presenters
 {
@@ -8,10 +7,10 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
         private ITopScoresView _view;
         private IActivityService _service;
 
-        public TopScoresPresenter(DataAccess.IDbContext dbCtx, ITopScoresView view)
+        public TopScoresPresenter(ITopScoresView view, IActivityService activitySvc)
         {
             _view = view;
-            _service = new ActivityService(dbCtx);
+            _service = activitySvc;
         }
 
         public ITopScoresView View

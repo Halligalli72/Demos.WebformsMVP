@@ -1,5 +1,4 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
-using Demos.WebformsMVP.BusinessLogic.Services;
 using System;
 
 namespace Demos.WebformsMVP.BusinessLogic.Presenters
@@ -9,10 +8,10 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
         private IRegisterUserView _view;
         private IUserInfoService _service;
 
-        public RegisterUserPresenter(DataAccess.IDbContext dbCtx, IRegisterUserView view)
+        public RegisterUserPresenter(IRegisterUserView view, IUserInfoService userInfoSvc)
         {
             _view = view;
-            _service = new UserInfoService(dbCtx);
+            _service = userInfoSvc;
         }
 
         public IRegisterUserView View

@@ -1,5 +1,4 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
-using Demos.WebformsMVP.BusinessLogic.Services;
 using System;
 using System.Collections.Generic;
 
@@ -10,10 +9,10 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
         private IActivityListView _view;
         private IActivityService _service;
 
-        public ActivityListPresenter(DataAccess.IDbContext dbCtx, IActivityListView view)
+        public ActivityListPresenter(IActivityListView view, IActivityService svc)
         {
             _view = view;
-            _service = new ActivityService(dbCtx);
+            _service = svc;
         }
 
         public IActivityListView View

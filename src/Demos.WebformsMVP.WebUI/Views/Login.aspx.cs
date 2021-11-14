@@ -1,6 +1,7 @@
 ﻿using Demos.WebformsMVP.BusinessLogic;
 using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Presenters;
+using Demos.WebformsMVP.BusinessLogic.Services;
 using System;
 
 namespace Demos.WebformsMVP.WebUI.Views
@@ -11,7 +12,10 @@ namespace Demos.WebformsMVP.WebUI.Views
         //private string _suggestedUserName = string.Empty;
         public Login()
         {
-            _presenter = new LoginPresenter(new DataAccess.WebformsMVPDemoEntities(Constants.CONNECTION_STRING), this);
+            //TODO: Use DI framework with interfaces instead
+            var dbCtx = new DataAccess.WebformsMVPDemoEntities(Constants.CONNECTION_STRING);
+            var svc = new UserInfoService(DataAccess.UserProfileRepository.CreateInstance(dbCtx));
+            _presenter = new LoginPresenter(this, svc);
         }
 
 
