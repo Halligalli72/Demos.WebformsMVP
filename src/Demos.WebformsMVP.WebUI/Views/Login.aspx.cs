@@ -1,7 +1,6 @@
 ﻿using Demos.WebformsMVP.BusinessLogic;
 using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Presenters;
-using Demos.WebformsMVP.BusinessLogic.Services;
 using System;
 
 namespace Demos.WebformsMVP.WebUI.Views
@@ -9,15 +8,11 @@ namespace Demos.WebformsMVP.WebUI.Views
     public partial class Login : DemoBasePage, ILoginView
     {
         private LoginPresenter _presenter;
-        //private string _suggestedUserName = string.Empty;
-        public Login()
-        {
-            //TODO: Use DI framework with interfaces instead
-            var dbCtx = new DataAccess.WebformsMVPDemoEntities(Constants.CONNECTION_STRING);
-            var svc = new UserInfoService(DataAccess.UserProfileRepository.CreateInstance(dbCtx));
-            _presenter = new LoginPresenter(this, svc);
-        }
 
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            _presenter = new LoginPresenter(this, UserInfoService);
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -1,7 +1,5 @@
-﻿using Demos.WebformsMVP.BusinessLogic;
-using Demos.WebformsMVP.BusinessLogic.Interfaces;
+﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Presenters;
-using Demos.WebformsMVP.BusinessLogic.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +10,14 @@ namespace Demos.WebformsMVP.WebUI.Views
     public partial class RegisterActivity : DemoBasePage, IRegisterActivityView
     {
         private RegisterActivityPresenter _presenter;
+
         private IList<IActivityType> _activityTypes = null;
 
-        public RegisterActivity()
+        protected void Page_PreInit(object sender, EventArgs e)
         {
-            //TODO: Use DI framework with interfaces instead
-            var dbCtx = new DataAccess.WebformsMVPDemoEntities(Constants.CONNECTION_STRING);
-            var activitySvc = new ActivityService(new DataAccess.ActivityRepository(dbCtx));
-            var activityTypeSvc = new ActivityTypeService(DataAccess.ActivityTypeRepository.CreateInstance(dbCtx));
-            _presenter = new RegisterActivityPresenter(this, activitySvc, activityTypeSvc);
+            _presenter = new RegisterActivityPresenter(this, ActivityService, ActivityTypeService);
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try

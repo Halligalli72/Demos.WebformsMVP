@@ -31,18 +31,6 @@ namespace Demos.WebformsMVP.DataAccess
     {
         private readonly IDbContext _dbCtx;
 
-        /// <summary>
-        /// Factory method
-        /// </summary>
-        /// <returns></returns>
-        //public static IActivityRepository CreateInstance(IDbContext dbCtx)
-        //{
-        //    return new ActivityRepository(dbCtx);
-        //}
-
-        /// <summary>
-        /// Hide default constructor by making it private
-        /// </summary>
         public ActivityRepository(IDbContext dbCtx) 
         {
             _dbCtx = dbCtx ?? throw new ArgumentNullException(nameof(dbCtx));

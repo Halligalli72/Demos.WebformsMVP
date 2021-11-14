@@ -1,7 +1,5 @@
-﻿using Demos.WebformsMVP.BusinessLogic;
-using Demos.WebformsMVP.BusinessLogic.Interfaces;
+﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Presenters;
-using Demos.WebformsMVP.BusinessLogic.Services;
 using System;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
@@ -12,14 +10,10 @@ namespace Demos.WebformsMVP.WebUI.Views
     {
         private UserProfilePresenter _presenter;
 
-        public UserProfile()
+        protected void Page_PreInit(object sender, EventArgs e)
         {
-            //TODO: Use DI framework with interfaces instead
-            var dbCtx = new DataAccess.WebformsMVPDemoEntities(Constants.CONNECTION_STRING);
-            var svc = new UserInfoService(DataAccess.UserProfileRepository.CreateInstance(dbCtx));
-            _presenter = new UserProfilePresenter(this, svc);
+            _presenter = new UserProfilePresenter(this, UserInfoService);
         }
-
 
         protected void Page_Load(object sender, EventArgs e)
         {

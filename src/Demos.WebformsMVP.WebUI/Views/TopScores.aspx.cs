@@ -1,7 +1,5 @@
-﻿using Demos.WebformsMVP.BusinessLogic;
-using Demos.WebformsMVP.BusinessLogic.Interfaces;
+﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Presenters;
-using Demos.WebformsMVP.BusinessLogic.Services;
 using System;
 
 namespace Demos.WebformsMVP.WebUI.Views
@@ -10,12 +8,9 @@ namespace Demos.WebformsMVP.WebUI.Views
     {
         private TopScoresPresenter _presenter;
 
-        public TopScores()
+        protected void Page_PreInit(object sender, EventArgs e)
         {
-            //TODO: Use DI framework with interfaces instead
-            var dbCtx = new DataAccess.WebformsMVPDemoEntities(Constants.CONNECTION_STRING);
-            var activitySvc = new ActivityService(new DataAccess.ActivityRepository(dbCtx));
-            _presenter = new TopScoresPresenter(this, activitySvc);
+            _presenter = new TopScoresPresenter(this, ActivityService);
         }
 
         protected void Page_Load(object sender, EventArgs e)

@@ -4,12 +4,9 @@ using System;
 
 namespace Demos.WebformsMVP.WebUI.Views
 {
-    [Autofac.Integration.Web.Forms.InjectProperties]
     public partial class StartPage : DemoBasePage, IStartPageView
     {
         private StartPagePresenter _presenter;
-
-        public IActivityService ActivityService { get; set; }
 
         protected void Page_PreInit(object sender, EventArgs e)
         {

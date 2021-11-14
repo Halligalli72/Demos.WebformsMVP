@@ -4,8 +4,8 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
 {
     public class StartPagePresenter
     {
-        private IStartPageView _view;
-        private IActivityService _service;
+        private readonly IStartPageView _view;
+        private readonly IActivityService _service;
 
         public StartPagePresenter(IStartPageView view, IActivityService activitySvc)
         {
