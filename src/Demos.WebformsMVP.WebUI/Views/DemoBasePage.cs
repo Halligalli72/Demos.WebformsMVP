@@ -5,6 +5,7 @@ using Demos.WebformsMVP.BusinessLogic.Interfaces;
 namespace Demos.WebformsMVP.WebUI.Views
 {
     /// <summary>
+    /// Autofac DI Container is setup in Global.asax.cs
     /// Autofac DI Reference: https://autofac.readthedocs.io/en/latest/integration/webforms.html?highlight=web%20forms#web-forms
     /// </summary>
     [InjectProperties]
