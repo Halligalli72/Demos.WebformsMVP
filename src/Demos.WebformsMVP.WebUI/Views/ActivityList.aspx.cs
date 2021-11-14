@@ -16,7 +16,7 @@ namespace Demos.WebformsMVP.WebUI.Views
         {
             //TODO: Use DI framework with interfaces instead
             var dbCtx = new DataAccess.WebformsMVPDemoEntities(Constants.CONNECTION_STRING);
-            var svc = new ActivityService(DataAccess.ActivityRepository.CreateInstance(dbCtx));
+            var svc = new ActivityService(new DataAccess.ActivityRepository(dbCtx));
             _presenter = new ActivityListPresenter(this, svc);
         }
 
