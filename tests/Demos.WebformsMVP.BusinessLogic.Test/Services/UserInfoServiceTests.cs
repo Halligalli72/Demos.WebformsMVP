@@ -124,7 +124,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
             //TODO: Use Moq to remove dependency against database
             const string CONNECTION_STRING = "name=WebformsMVPDemoEntities";
             var dbCtx = new WebformsMVPDemoEntities(CONNECTION_STRING);
-            return new UserInfoService(UserProfileRepository.CreateInstance(dbCtx));
+            return new UserInfoService(new UserProfileRepository(dbCtx));
         }
     }
 }
