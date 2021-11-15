@@ -1,6 +1,6 @@
 # Demos.WebformsMVP: Demonstrerar MVP pattern med ASP.Net Web Forms
 
-Lösningen demonstrerar hur ett MVP pattern (Model-View-Presenter) kan appliceras i ett gammalt ASP.Net Web Forms webbprojekt.  
+Exemplet demonstrerar hur ett MVP pattern (Model-View-Presenter) kan appliceras i ett gammalt ASP.Net Web Forms webbprojekt.  
 På detta sätt blir koden mer strukturerad, får bättre testbarhet och förbereds för framtida byte av vymotor.
 
 Komma igång:  
