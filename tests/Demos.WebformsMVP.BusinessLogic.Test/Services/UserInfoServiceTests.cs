@@ -27,10 +27,8 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
                 newUser.ResultsArePublic = true;
                 newUser.TeamName = "Test team";
                 newUser.Department = "Testing";
-
                 //Act
                 IUserInfo createdUser = target.CreateUser(newUser);
-
                 //Assert
                 Assert.AreEqual(newUser.UserName,createdUser.UserName);
                 Assert.AreEqual(newUser.Name, createdUser.Name);
@@ -38,7 +36,6 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
                 Assert.AreEqual(newUser.ResultsArePublic, createdUser.ResultsArePublic);
                 Assert.AreEqual(newUser.TeamName, createdUser.TeamName);
                 Assert.AreEqual(newUser.Department, createdUser.Department);
-
             }
             catch (Exception ex)
             {
@@ -61,7 +58,6 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
                 {
                     Assert.IsFalse(item.IsAdmin,"Admins were not supposed to be fetched!");
                 }
-
             }
             catch (Exception ex)
             {
@@ -83,7 +79,6 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
                 {
                     Assert.IsTrue(item.IsAdmin, "Only Admins were supposed to be fetched!");
                 }
-
             }
             catch (Exception ex)
             {
@@ -125,7 +120,6 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
                 Assert.IsNotNull(result, "Method returned null!");
                 const int expectedCount = 2;
                 Assert.AreEqual(expectedCount, result.Count);
-
             }
             catch (Exception ex)
             {
