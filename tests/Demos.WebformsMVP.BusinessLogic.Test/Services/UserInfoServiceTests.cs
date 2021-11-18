@@ -1,14 +1,16 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Services;
+using Demos.WebformsMVP.BusinessLogic.Test.Extensions;
 using Demos.WebformsMVP.DataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using System;
 using System.Collections.Generic;
 
 namespace Demos.WebformsMVP.BusinessLogic.Test.Services
 {
     [TestClass]
-    public class UserInfoServiceTests
+    public class UserInfoServiceTests : BaseTest
     {
 
         [TestMethod]
@@ -50,7 +52,8 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
             try
             {
                 IUserInfoService target = CreateTestTarget();
-                bool includeAdmins = false;
+                const bool includeAdmins = false;
+                //Act
                 IList<IUserInfo> result = target.GetAllUsers(includeAdmins);
                 //Assert
                 Assert.IsNotNull(result, "Method returned null!");
@@ -72,9 +75,14 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
             try
             {
                 IUserInfoService target = CreateTestTarget();
+                //Act
                 IList<IUserInfo> result = target.GetAdminUsers();
+                //Assert
                 Assert.IsNotNull(result, "Method returned null!");
-                //TODO:Check that only admins where fetched
+                foreach (var item in result)
+                {
+                    Assert.IsTrue(item.IsAdmin, "Only Admins were supposed to be fetched!");
+                }
 
             }
             catch (Exception ex)
@@ -89,10 +97,15 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
             try
             {
                 IUserInfoService target = CreateTestTarget();
-                string filter = "laban";
+                const string filter = "TestTeam";
+                //Act
                 IList<IUserInfo> result = target.GetByTeam(filter);
                 Assert.IsNotNull(result,"Method returned null!");
-
+                //Assert
+                foreach (var item in result)
+                {
+                    Assert.AreEqual(filter, item.TeamName, "Mixed teams fetched!");
+                }
             }
             catch (Exception ex)
             {
@@ -106,8 +119,12 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
             try
             {
                 IUserInfoService target = CreateTestTarget();
+                //Act
                 IList<string> result = target.GetAllTeamNames();
+                //Assert
                 Assert.IsNotNull(result, "Method returned null!");
+                const int expectedCount = 2;
+                Assert.AreEqual(expectedCount, result.Count);
 
             }
             catch (Exception ex)
@@ -121,10 +138,14 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
 
         private UserInfoService CreateTestTarget()
         {
-            //TODO: Use Moq to remove dependency against database
-            const string CONNECTION_STRING = "name=WebformsMVPDemoEntities";
-            var dbCtx = new WebformsMVPDemoEntities(CONNECTION_STRING);
-            return new UserInfoService(new UserProfileRepository(dbCtx));
+            Mock<IDbContext> ctxMock = CreateEmptyDbContext();
+            var users = new List<UserProfile> 
+            {
+                new UserProfile() { UserProfileId = 1, UserName = "TestUserName", Name = "TestName", Department = "TestDepartment", Team = "TestTeam", IsAdmin = false },
+                new UserProfile() { UserProfileId = 2, UserName = "AdminUserName", Name = "AdminName", Department = "AdminDepartment", Team = "AdminTeam", IsAdmin = false },
+            };
+            ctxMock.AddEntities(users.ToArray());
+            return new UserInfoService(new UserProfileRepository(ctxMock.Object));
         }
     }
 }
