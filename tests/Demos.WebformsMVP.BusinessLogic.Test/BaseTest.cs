@@ -10,7 +10,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Test
         {
             var ctx = new Mock<IDbContext>();
             ctx.AddEntities(new Activity());
-            ctx.AddEntities(new ActivityType());
+            ctx.AddEntities(new ActivityType { ActivityTypeId = 1, Name = "Other" });
             ctx.AddEntities(new UserProfile());
             return ctx;
         }
