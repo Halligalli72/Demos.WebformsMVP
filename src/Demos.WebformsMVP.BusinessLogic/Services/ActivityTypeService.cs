@@ -42,8 +42,8 @@ namespace Demos.WebformsMVP.BusinessLogic.Services
             }
             else 
             {
-                _repo.CreateType(Translator.TranslateToDatabaseObject(activityType));
-                return Translator.TranslateToBusinessObject(_repo.GetByName(activityType.ActivityName));
+                int key = _repo.CreateType(Translator.TranslateToDatabaseObject(activityType));
+                return Translator.TranslateToBusinessObject(_repo.GetByKey(key));
             }
         }
 

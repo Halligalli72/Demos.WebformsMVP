@@ -11,9 +11,11 @@ namespace Demos.WebformsMVP.DataAccess
     /// </summary>
     public interface IUserProfileRepository
     {
-        void CreateUser(UserProfile newUser);
+        int CreateUser(UserProfile newUser);
 
         void UpdateUser(string existingUsername, UserProfile updatedUser);
+
+        UserProfile GetByKey(int key);
 
         UserProfile GetUserByUsername(string username);
 
@@ -35,21 +37,16 @@ namespace Demos.WebformsMVP.DataAccess
     {
         private readonly IDbContext _dbCtx;
 
-        /// <summary>
-        /// Factory method
-        /// </summary>
-        /// <returns></returns>
-        public static IUserProfileRepository CreateInstance(IDbContext dbCtx)
-        {
-            return new UserProfileRepository(dbCtx);
-        }
-
-        /// <summary>
-        /// Hide default constructor by making it private
-        /// </summary>
-        private UserProfileRepository(IDbContext dbCtx) 
+        public UserProfileRepository(IDbContext dbCtx) 
         {
             _dbCtx = dbCtx ?? throw new ArgumentNullException(nameof(dbCtx));
+        }
+
+        public UserProfile GetByKey(int key)
+        {
+            return _dbCtx.Set<UserProfile>()
+                .Where(up => up.UserProfileId.Equals(key))
+                .FirstOrDefault();
         }
 
         public UserProfile GetUserByUsername(string username)
@@ -59,12 +56,13 @@ namespace Demos.WebformsMVP.DataAccess
                 .FirstOrDefault();
         }
 
-        public void CreateUser(UserProfile newUser)
+        public int CreateUser(UserProfile newUser)
         {
             newUser.IsAdmin = false;
             newUser.Created = newUser.Updated = DateTime.Now;
             _dbCtx.Set<UserProfile>().Add(newUser);
             _dbCtx.SaveChanges();
+            return newUser.UserProfileId;
         }
 
         public void UpdateUser(string existingUsername, UserProfile updatedUser)
@@ -121,6 +119,5 @@ namespace Demos.WebformsMVP.DataAccess
                 .Where(up => up.IsAdmin.Equals(true))
                 .ToList();
         }
-
     }
 }

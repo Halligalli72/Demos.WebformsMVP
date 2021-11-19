@@ -1,13 +1,13 @@
-﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
-using Demos.WebformsMVP.BusinessLogic.Services;
+﻿using Demos.WebformsMVP.BusinessLogic.Services;
 using Demos.WebformsMVP.DataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using System;
 
 namespace Demos.WebformsMVP.BusinessLogic.Test.Services
 {
     [TestClass]
-    public class ActivityServiceTests
+    public class ActivityServiceTests : BaseTest
     {
         [TestMethod]
         public void CreateActivityTest()
@@ -20,10 +20,8 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
 
         private ActivityService CreateTestTarget()
         {
-            //TODO: Use Moq to remove dependency against database
-            const string CONNECTION_STRING = "name=WebformsMVPDemoEntities";
-            var dbCtx = new WebformsMVPDemoEntities(CONNECTION_STRING);
-            return new ActivityService(ActivityRepository.CreateInstance(dbCtx));
+            Mock<IDbContext> ctxMock = CreateEmptyDbContext();
+            return new ActivityService(new DataAccess.ActivityRepository(ctxMock.Object));
         }
 
     }

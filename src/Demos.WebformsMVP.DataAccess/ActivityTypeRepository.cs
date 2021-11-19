@@ -8,9 +8,12 @@ namespace Demos.WebformsMVP.DataAccess
     /// </summary>
     public interface IActivityTypeRepository
     {
-        void CreateType(ActivityType newType);
+        int CreateType(ActivityType newType);
+
         ActivityType GetByKey(int key);
+
         ActivityType GetByName(string name);
+
         IList<ActivityType> GetAll(bool includeInactive);
     }
 
@@ -21,19 +24,7 @@ namespace Demos.WebformsMVP.DataAccess
     {
         private readonly IDbContext _dbCtx;
 
-        /// <summary>
-        /// Factory method
-        /// </summary>
-        /// <returns></returns>
-        public static IActivityTypeRepository CreateInstance(IDbContext dbCtx)
-        {
-            return new ActivityTypeRepository(dbCtx);
-        }
-
-        /// <summary>
-        /// Hide default constructor by making it private
-        /// </summary>
-        private ActivityTypeRepository(IDbContext dbCtx) 
+        public ActivityTypeRepository(IDbContext dbCtx) 
         {
             _dbCtx = dbCtx ?? throw new ArgumentNullException(nameof(dbCtx));
         }
@@ -56,11 +47,12 @@ namespace Demos.WebformsMVP.DataAccess
             return _dbCtx.Set<ActivityType>().Where(at => at.Name.ToLower().Equals(name.ToLower())).FirstOrDefault();
         }
 
-        public void CreateType(ActivityType newType)
+        public int CreateType(ActivityType newType)
         {
             newType.Created = newType.Updated = DateTime.Now;
             _dbCtx.Set<ActivityType>().Add(newType);
             _dbCtx.SaveChanges();
+            return newType.ActivityTypeId;
         }
     }
 }

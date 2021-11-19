@@ -78,8 +78,8 @@ namespace Demos.WebformsMVP.BusinessLogic.Services
             }
             else
             {
-                _repo.CreateUser(Translator.TranslateToDatabaseObject(userinfo));
-                return Translator.TranslateToBusinessObject(_repo.GetUserByUsername(userinfo.UserName));
+                int key = _repo.CreateUser(Translator.TranslateToDatabaseObject(userinfo));
+                return Translator.TranslateToBusinessObject(_repo.GetByKey(key));
             }
         }
 

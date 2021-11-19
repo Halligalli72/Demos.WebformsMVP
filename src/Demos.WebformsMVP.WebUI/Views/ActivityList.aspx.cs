@@ -12,12 +12,9 @@ namespace Demos.WebformsMVP.WebUI.Views
     {
         private ActivityListPresenter _presenter;
 
-        public ActivityList()
+        protected void Page_PreInit(object sender, EventArgs e)
         {
-            //TODO: Use DI framework with interfaces instead
-            var dbCtx = new DataAccess.WebformsMVPDemoEntities(Constants.CONNECTION_STRING);
-            var svc = new ActivityService(DataAccess.ActivityRepository.CreateInstance(dbCtx));
-            _presenter = new ActivityListPresenter(this, svc);
+            _presenter = new ActivityListPresenter(this, ActivityService);
         }
 
         protected void Page_Load(object sender, EventArgs e)
