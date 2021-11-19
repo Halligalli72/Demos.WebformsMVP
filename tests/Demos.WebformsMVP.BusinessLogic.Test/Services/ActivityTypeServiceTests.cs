@@ -17,8 +17,8 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Services
             //Arrange
             IActivityTypeService target = CreateTestTarget();
             IActivityType newAct = Factory.CreateActivityType();
-            newAct.ActivityName = "Other";
-            newAct.Steps = 0;
+            newAct.ActivityName = "TestActivityType";
+            newAct.Steps = 11;
             newAct.IsActivated = true;
 
             //Act
