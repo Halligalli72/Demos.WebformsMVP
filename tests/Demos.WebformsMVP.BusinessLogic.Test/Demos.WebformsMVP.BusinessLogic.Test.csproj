@@ -87,16 +87,6 @@
     <Compile Include="Services\UserInfoServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Demos.WebformsMVP.BusinessLogic\Demos.WebformsMVP.BusinessLogic.csproj">
-      <Project>{de25bf3f-cee3-47dc-9f33-791048501b59}</Project>
-      <Name>Demos.WebformsMVP.BusinessLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Demos.WebformsMVP.DataAccess\Demos.WebformsMVP.DataAccess.csproj">
-      <Project>{150E2AED-5CB9-43B9-B399-BDDE43016C77}</Project>
-      <Name>Demos.WebformsMVP.DataAccess</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Presenters\" />
   </ItemGroup>
   <ItemGroup>

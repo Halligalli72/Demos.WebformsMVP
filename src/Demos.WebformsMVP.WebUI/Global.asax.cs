@@ -3,6 +3,7 @@ using Autofac.Integration.Web;
 using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using Demos.WebformsMVP.BusinessLogic.Services;
 using Demos.WebformsMVP.DataAccess;
+using Demos.WebformsMVP.DataAccess.Repositories;
 using System;
 
 namespace Demos.WebformsMVP.WebUI
@@ -21,7 +22,7 @@ namespace Demos.WebformsMVP.WebUI
             // Build up your application container and register your dependencies.
             var builder = new ContainerBuilder();
             //Register EF DbContext
-            builder.RegisterType<WebformsMVPDemoEntities>().As<IDbContext>().InstancePerRequest();
+            builder.RegisterType<WebformsDemoDbContext>().As<IDbContext>().InstancePerRequest();
             //Register Repositories
             builder.RegisterType<UserProfileRepository>().As<IUserProfileRepository>().InstancePerRequest();
             builder.RegisterType<ActivityRepository>().As<IActivityRepository>().InstancePerRequest();

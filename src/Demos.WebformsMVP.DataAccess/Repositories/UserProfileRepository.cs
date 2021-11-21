@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Demos.WebformsMVP.DataAccess.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Demos.WebformsMVP.DataAccess
+namespace Demos.WebformsMVP.DataAccess.Repositories
 {
     /// <summary>
     /// INTERFACE
