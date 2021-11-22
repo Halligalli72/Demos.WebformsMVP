@@ -20,6 +20,6 @@ namespace Demos.WebformsMVP.DataAccess.Entities
         public System.DateTime Created { get; set; }
         public System.DateTime Updated { get; set; }
     
-        public virtual IEnumerable<Activity> Activity { get; set; }
+        public virtual ICollection<Activity> Activity { get; set; }
     }
 }

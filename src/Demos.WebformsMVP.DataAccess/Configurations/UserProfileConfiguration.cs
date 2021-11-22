@@ -10,7 +10,8 @@ namespace Demos.WebformsMVP.DataAccess.Configurations
         public void Configure(EntityTypeBuilder<UserProfile> builder)
         {
             builder.ToTable("UserProfile");
-            builder.Property(p => p.UserProfileId).IsRequired().ValueGeneratedOnAdd();
+            builder.HasKey(p => p.UserProfileId);
+            builder.Property(p => p.UserProfileId).ValueGeneratedOnAdd();
             builder.Property(p => p.UserName).IsRequired().HasMaxLength(50);
             builder.Property(p => p.Name).IsRequired().HasMaxLength(50);
             builder.Property(p => p.Team).IsRequired().HasMaxLength(50);

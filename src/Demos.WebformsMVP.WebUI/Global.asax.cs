@@ -6,6 +6,7 @@ using Demos.WebformsMVP.DataAccess;
 using Demos.WebformsMVP.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Configuration;
 
 namespace Demos.WebformsMVP.WebUI
 {
@@ -23,7 +24,8 @@ namespace Demos.WebformsMVP.WebUI
             // Build up your application container and register your dependencies.
             var builder = new ContainerBuilder();
             //Register EF DbContext
-            var optionsBuilder = new DbContextOptionsBuilder().UseSqlServer("WebformsDemoDbContext").UseLazyLoadingProxies();
+            var connStr = ConfigurationManager.ConnectionStrings["WebformsDemoDbContext"].ConnectionString;
+            var optionsBuilder = new DbContextOptionsBuilder().UseSqlServer(connStr).UseLazyLoadingProxies();
             builder.RegisterType<WebformsDemoDbContext>().As<IDbContext>().InstancePerRequest()
                 .WithParameter("options", optionsBuilder.Options);
             //Register Repositories

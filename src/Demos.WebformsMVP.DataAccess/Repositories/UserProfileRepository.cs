@@ -99,7 +99,7 @@ namespace Demos.WebformsMVP.DataAccess.Repositories
 
         public IList<string> GetRegistredTeamNames()
         {
-            var result = _dbCtx.Set<UserProfile>()
+            var result = _dbCtx.Set<UserProfile>().ToList()
                 .GroupBy(up => up.Team.ToLower())
                 .Select(g => g.FirstOrDefault().Team);
             return result.ToList();
@@ -118,5 +118,6 @@ namespace Demos.WebformsMVP.DataAccess.Repositories
                 .Where(up => up.IsAdmin.Equals(true))
                 .ToList();
         }
+
     }
 }
