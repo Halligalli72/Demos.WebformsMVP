@@ -5,8 +5,8 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
 {
     public class RegisterUserPresenter
     {
-        private IRegisterUserView _view;
-        private IUserInfoService _service;
+        private readonly IRegisterUserView _view;
+        private readonly IUserInfoService _service;
 
         public RegisterUserPresenter(IRegisterUserView view, IUserInfoService userInfoSvc)
         {
@@ -37,7 +37,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
         public void HandleRegisterNewUserAction() 
         {
             //Do validations here
-            string objections = validateRequredInput(View);
+            string objections = ValidateRequredInput(View);
             if (objections.Length == 0)
             {
                 IUserInfo user = Factory.CreateUserInfo();
@@ -59,7 +59,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
             }
         }
 
-        private string validateRequredInput(IRegisterUserView view)
+        private string ValidateRequredInput(IRegisterUserView view)
         {
             string objections = string.Empty;
             if (view.UserNameInput.Trim().Length == 0)

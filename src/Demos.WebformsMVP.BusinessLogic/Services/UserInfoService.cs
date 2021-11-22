@@ -32,7 +32,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Services
 {
     public class UserInfoService : IUserInfoService
     {
-        private DataAccess.Repositories.IUserProfileRepository _repo = null; 
+        private readonly DataAccess.Repositories.IUserProfileRepository _repo = null; 
         
         public UserInfoService(DataAccess.Repositories.IUserProfileRepository userProfileRepo)
         {

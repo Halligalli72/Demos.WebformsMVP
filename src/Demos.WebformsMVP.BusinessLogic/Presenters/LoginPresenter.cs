@@ -4,8 +4,8 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
 {
     public class LoginPresenter
     {
-        private ILoginView _view;
-        private IUserInfoService _service;
+        private readonly ILoginView _view;
+        private readonly IUserInfoService _service;
 
         public LoginPresenter(ILoginView view, IUserInfoService userInfoSvc)
         {
