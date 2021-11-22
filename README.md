@@ -5,8 +5,8 @@ På detta sätt blir koden mer strukturerad, får bättre testbarhet och förber
 
 Komma igång:  
 1. Installera SQL Server Express (instans: .\SQLEXPRESS)  
-2. Skapa en databas som heter 'WebformsMVPDemo' (samma som namnet i web.config/app.config)  
-3. Kör scriptet 'WebFormsMVPModel.edmx.sql' i SQL Server Managment Studio.  
+2. Skapa en tom databas som heter 'WebformsMVPDemo' (samma som namnet i web.config)  
+3. Kör scripten under 'Demos.WebformsMVP.DataAccess\Database' i SQL Server Management Studio för att skapa tabeller och fylla med data.  
 4. Bygg solution och kör enhetstesterna.  
 4. Sätt projektet 'Demos.WebformsMVP.WebUI' som startup och starta debug.  
 
