@@ -16,7 +16,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Interfaces
         int DurationInput { get; set; }
 
 
-        void InitAvailableActivities(IList<IActivityType> activityTypes);
+        void InitAvailableActivityTypes(IList<IActivityType> activityTypes);
         
         void DisplayInfoMessage(string msg);
 

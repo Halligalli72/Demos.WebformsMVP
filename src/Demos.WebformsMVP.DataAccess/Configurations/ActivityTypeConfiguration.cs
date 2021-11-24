@@ -11,7 +11,6 @@ namespace Demos.WebformsMVP.DataAccess.Configurations
         {
             builder.ToTable("ActivityType");
             builder.HasKey(p => p.ActivityTypeId);
-            builder.Property(p => p.ActivityTypeId).ValueGeneratedOnAdd();
             builder.Property(p => p.Name).IsRequired().HasMaxLength(50);
             builder.Property(p => p.StepValue).IsRequired();
             builder.Property(p => p.IsActivated).IsRequired();

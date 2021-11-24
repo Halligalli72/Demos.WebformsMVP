@@ -1,28 +1,42 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Services;
 using Demos.WebformsMVP.DataAccess;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
+using Demos.WebformsMVP.DataAccess.Repositories;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Demos.WebformsMVP.BusinessLogic.Test.Services
 {
-    [TestClass]
     public class ActivityServiceTests : BaseTest
     {
-        [TestMethod]
-        public void CreateActivityTest()
+        private readonly ITestOutputHelper _output;
+        private IDbContext _dbCtx;
+
+        public ActivityServiceTests(ITestOutputHelper output)
         {
-            //TODO: Add test
-            Assert.Inconclusive();
+            _output = output;
+            _dbCtx = CreateSimpleTestContext();
+        }
+
+        private ActivityService CreateTestTarget(IDbContext dbCtx)
+        {
+            var repo = new ActivityRepository(dbCtx);
+            return new ActivityService(repo);
+        }
+
+        [Fact]
+        public void GetAllActivitiesTest()
+        {
+            var target = CreateTestTarget(_dbCtx);
+            const int userId = 1;
+            var result = target.GetByUserProfileId(userId);
+            foreach (var act in result)
+            {
+                Assert.Equal(userId,act.UserProfileId);
+            }
         }
 
 
 
-        private ActivityService CreateTestTarget()
-        {
-            Mock<IDbContext> ctxMock = CreateEmptyDbContext();
-            return new ActivityService(new DataAccess.ActivityRepository(ctxMock.Object));
-        }
 
     }
 }

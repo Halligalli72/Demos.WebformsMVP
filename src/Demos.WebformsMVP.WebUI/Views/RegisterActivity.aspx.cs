@@ -105,7 +105,7 @@ namespace Demos.WebformsMVP.WebUI.Views
             Response.Redirect("ActivityList.aspx?selection=own", false);
         }
 
-        public void InitAvailableActivities(IList<IActivityType> types)
+        public void InitAvailableActivityTypes(IList<IActivityType> types)
         {
             if (types != null)
             {
