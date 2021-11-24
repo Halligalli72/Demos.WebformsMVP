@@ -10,7 +10,7 @@ namespace Demos.WebformsMVP.BusinessLogic
     /// </summary>
     public static class Translator
     {
-        public static IUserInfo TranslateToBusinessObject(DataAccess.UserProfile dbobject)
+        public static IUserInfo TranslateToBusinessObject(DataAccess.Entities.UserProfile dbobject)
         {
             IUserInfo bo = Factory.CreateUserInfo();
             bo.ID = dbobject.UserProfileId;
@@ -25,7 +25,7 @@ namespace Demos.WebformsMVP.BusinessLogic
             return bo;
         }
 
-        public static IList<IUserInfo> TranslateToBusinessObject(IList<DataAccess.UserProfile> dbobjectList)
+        public static IList<IUserInfo> TranslateToBusinessObject(IList<DataAccess.Entities.UserProfile> dbobjectList)
         {
             IList<IUserInfo> boList = new List<IUserInfo>();
             foreach (var dbobject in dbobjectList)
@@ -35,7 +35,7 @@ namespace Demos.WebformsMVP.BusinessLogic
             return boList;
         }
 
-        public static IActivityType TranslateToBusinessObject(DataAccess.ActivityType dbobject)
+        public static IActivityType TranslateToBusinessObject(DataAccess.Entities.ActivityType dbobject)
         {
             IActivityType bo = Factory.CreateActivityType();
             bo.ID = dbobject.ActivityTypeId;
@@ -47,7 +47,7 @@ namespace Demos.WebformsMVP.BusinessLogic
             return bo;
         }
 
-        public static IList<IActivityType> TranslateToBusinessObject(IList<DataAccess.ActivityType> dbobjectList)
+        public static IList<IActivityType> TranslateToBusinessObject(IList<DataAccess.Entities.ActivityType> dbobjectList)
         {
             IList<IActivityType> boList = new List<IActivityType>();
             foreach (var dbobject in dbobjectList)
@@ -58,7 +58,7 @@ namespace Demos.WebformsMVP.BusinessLogic
         }
 
 
-        public static IActivity TranslateToBusinessObject(DataAccess.Activity dbobject)
+        public static IActivity TranslateToBusinessObject(DataAccess.Entities.Activity dbobject)
         {
             IActivity bo = Factory.CreateActivity();
             bo.ActivityDate = dbobject.ActivityDate;
@@ -74,7 +74,7 @@ namespace Demos.WebformsMVP.BusinessLogic
             return bo;
         }
 
-        public static IList<IActivity> TranslateToBusinessObject(IList<DataAccess.Activity> dbobjectList)
+        public static IList<IActivity> TranslateToBusinessObject(IList<DataAccess.Entities.Activity> dbobjectList)
         {
             IList<IActivity> boList = new List<IActivity>();
             foreach (var dbobject in dbobjectList)
@@ -85,9 +85,9 @@ namespace Demos.WebformsMVP.BusinessLogic
         }
 
 
-        public static DataAccess.UserProfile TranslateToDatabaseObject(IUserInfo bo)
+        public static DataAccess.Entities.UserProfile TranslateToDatabaseObject(IUserInfo bo)
         {
-            DataAccess.UserProfile dbObject = new DataAccess.UserProfile();
+            DataAccess.Entities.UserProfile dbObject = new DataAccess.Entities.UserProfile();
             dbObject.UserProfileId = bo.ID;
             dbObject.UserName = bo.UserName;
             dbObject.Name = bo.Name;
@@ -99,9 +99,9 @@ namespace Demos.WebformsMVP.BusinessLogic
             return dbObject;
         }
 
-        public static DataAccess.ActivityType TranslateToDatabaseObject(IActivityType bo) 
+        public static DataAccess.Entities.ActivityType TranslateToDatabaseObject(IActivityType bo) 
         {
-            DataAccess.ActivityType dbObject = new DataAccess.ActivityType();
+            DataAccess.Entities.ActivityType dbObject = new DataAccess.Entities.ActivityType();
             dbObject.Name = bo.ActivityName;
             dbObject.StepValue = bo.Steps;
             dbObject.IsActivated = bo.IsActivated;
@@ -110,9 +110,9 @@ namespace Demos.WebformsMVP.BusinessLogic
             return dbObject;
         }
 
-        public static DataAccess.Activity TranslateToDatabaseObject(IActivity bo)
+        public static DataAccess.Entities.Activity TranslateToDatabaseObject(IActivity bo)
         {
-            DataAccess.Activity dbObject = new DataAccess.Activity();
+            DataAccess.Entities.Activity dbObject = new DataAccess.Entities.Activity();
             dbObject.ActivityDate = bo.ActivityDate;
             dbObject.ActivityTypeId = bo.ActivityTypeId;
             dbObject.OtherActivity = bo.OtherActivity;

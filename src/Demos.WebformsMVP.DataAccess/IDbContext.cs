@@ -1,12 +1,15 @@
-﻿using System;
-using System.Data.Entity;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Demos.WebformsMVP.DataAccess
 {
     public interface IDbContext : IDisposable
 	{
-		IDbSet<T> Set<T>() where T : class;
-
+		DbSet<T> Set<T>() where T : class;
 		int SaveChanges();
+
+		Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 	}
 }

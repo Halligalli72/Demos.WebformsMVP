@@ -28,9 +28,9 @@ namespace Demos.WebformsMVP.BusinessLogic.Services
 {
     public class ActivityService : IActivityService
     {
-        private DataAccess.IActivityRepository _repo = null;
+        private DataAccess.Repositories.IActivityRepository _repo = null;
 
-        public ActivityService(DataAccess.IActivityRepository activityRepo)
+        public ActivityService(DataAccess.Repositories.IActivityRepository activityRepo)
         {
             _repo = activityRepo ?? throw new ArgumentNullException(nameof(activityRepo));
         }

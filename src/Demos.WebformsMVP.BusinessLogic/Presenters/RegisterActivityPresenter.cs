@@ -28,7 +28,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
 
             View.UserName = View.LoggedInUser.UserName;
             View.ActivityDateInput = DateTime.Now.ToShortDateString();
-            View.InitAvailableActivities(_activityTypeService.GetAll(false));
+            View.InitAvailableActivityTypes(_activityTypeService.GetAll(false));
             View.DurationInput = _defaultDuration;
         }
 

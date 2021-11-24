@@ -32,9 +32,9 @@ namespace Demos.WebformsMVP.BusinessLogic.Services
 {
     public class UserInfoService : IUserInfoService
     {
-        private DataAccess.IUserProfileRepository _repo = null; 
+        private readonly DataAccess.Repositories.IUserProfileRepository _repo = null; 
         
-        public UserInfoService(DataAccess.IUserProfileRepository userProfileRepo)
+        public UserInfoService(DataAccess.Repositories.IUserProfileRepository userProfileRepo)
         {
             _repo = userProfileRepo ?? throw new ArgumentNullException(nameof(userProfileRepo));
         }
