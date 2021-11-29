@@ -39,6 +39,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Presenters
         {
             //Arrange
             const int userId = 1;
+            const string selection = "";
             var userMock = new Mock<IUserInfo>();
             userMock.Setup(user => user.ID).Returns(userId);
             var viewMock = new ActivityListViewMock();
@@ -48,7 +49,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Presenters
             svcMock.Setup(ep => ep.GetByUserProfileId(userId)).Returns(GetTestActivities().Where(a => a.UserProfileId.Equals(1)).ToList());
             var testTarget = new ActivityListPresenter(viewMock, svcMock.Object);
             //Act
-            testTarget.InitView("");
+            testTarget.InitView(selection);
             //Assert
             Assert.True(viewMock.DisplayedActivities.Count > 0);
             foreach (var act in viewMock.DisplayedActivities)
