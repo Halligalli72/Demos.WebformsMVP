@@ -17,18 +17,40 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Presenters
         }
 
         [Fact]
-        public void SampleTest()
+        public void AlreadyRegisteredUserShouldBeRedirectedToProfilePage()
         {
             //Arrange
+            var userMock = new Mock<IUserInfo>();
+            userMock.Setup(u => u.UserName).Returns("TestUserName");
             var viewMock = new RegisterUserViewMock();
             var svcMock = new Mock<IUserInfoService>();
+            svcMock.Setup(s => s.GetAllTeamNames()).Returns(new string[] { "Team 1", "Team 2", "Team 3" });
             var testTarget = new RegisterUserPresenter(viewMock, svcMock.Object);
             //Act
-
+            testTarget.InitView(userMock.Object, alternateUsername: string.Empty);
             //Assert
-
+            Assert.True(viewMock.BeenRedirectedToProfilePage);
         }
 
+        [Fact]
+        public void NotRegisteredUserShouldBeDisplayedRegistrationForm()
+        {
+            //Arrange
+            const string altUsername = "MyUserName";
+            var userMock = new Mock<IUserInfo>();
+            userMock.Setup(u => u.UserName).Returns(string.Empty);
+            var viewMock = new RegisterUserViewMock();
+            var svcMock = new Mock<IUserInfoService>();
+            svcMock.Setup(s => s.GetAllTeamNames()).Returns(new string[] { "Team 1", "Team 2", "Team 3" });
+            var testTarget = new RegisterUserPresenter(viewMock, svcMock.Object);
+            //Act
+            testTarget.InitView(userMock.Object, altUsername);
+            //Assert
+            Assert.False(viewMock.BeenRedirectedToProfilePage);
+            Assert.True(viewMock.AvailableTeams.Count > 0);
+            Assert.Equal(altUsername, viewMock.UserNameInput);
+            Assert.Equal("Fill in the registration form", viewMock.DisplayedInfoMessage);
+        }
 
 
 
@@ -36,8 +58,12 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Presenters
 
         internal class RegisterUserViewMock : IRegisterUserView
         {
+            public bool BeenRedirectedToProfilePage { get; private set; } = false;
+            public string DisplayedInfoMessage { get; private set; }
+            private string _userNameInput;
+            public IList<string> AvailableTeams { get; private set; }
             public IUserInfo LoggedInUser { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-            public string UserNameInput { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+            public string UserNameInput { get { return _userNameInput; } set { _userNameInput = value; } }
             public string NameInput { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
             public string SelectedTeam => throw new System.NotImplementedException();
@@ -53,17 +79,17 @@ namespace Demos.WebformsMVP.BusinessLogic.Test.Presenters
 
             public void DisplayInfoMessage(string msg)
             {
-                throw new System.NotImplementedException();
+                DisplayedInfoMessage = msg;
             }
 
             public void InitAvailableTeams(IList<string> teamNames)
             {
-                throw new System.NotImplementedException();
+                AvailableTeams = teamNames;
             }
 
             public void RedirectToProfilePage()
             {
-                throw new System.NotImplementedException();
+                BeenRedirectedToProfilePage = true;
             }
         }
     }
