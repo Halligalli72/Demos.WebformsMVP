@@ -24,6 +24,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
             View.InitAvailableTeams(_service.GetAllTeamNames());
             if (userinfo.UserName.Length > 0)
             {
+                //User is already logged in
                 View.RedirectToProfilePage();
             }
             else
