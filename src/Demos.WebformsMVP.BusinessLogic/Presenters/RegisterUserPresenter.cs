@@ -38,7 +38,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
         public void HandleRegisterNewUserAction() 
         {
             //Do validations here
-            string objections = ValidateRequredInput(View);
+            string objections = ValidateRequiredInput(View);
             if (objections.Length == 0)
             {
                 IUserInfo user = Factory.CreateUserInfo();
@@ -60,7 +60,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
             }
         }
 
-        private string ValidateRequredInput(IRegisterUserView view)
+        private string ValidateRequiredInput(IRegisterUserView view)
         {
             string objections = string.Empty;
             if (view.UserNameInput.Trim().Length == 0)

@@ -35,7 +35,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
         public void HandleSaveAction()
         {
             // Do validations here
-            string objections = validateRequiredInput(View);
+            string objections = ValidateRequiredInput(View);
             if (objections.Length == 0)
             {
                 IActivity act = Factory.CreateActivity();
@@ -54,7 +54,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
             }
         }
 
-        private string validateRequiredInput(IRegisterActivityView view)
+        private string ValidateRequiredInput(IRegisterActivityView view)
         {
             string objections = string.Empty;
             if (DateTime.Parse(view.ActivityDateInput) > DateTime.Now)
