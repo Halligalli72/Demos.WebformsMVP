@@ -30,14 +30,14 @@ namespace Demos.WebformsMVP.WebUI.Views
         {
             get
             {
-                if (Session[Constants.UserObjectKey] == null)
+                if (Session[AppConstants.SessionVariables.UserObjectKey] == null)
                     return Factory.CreateUserInfo();
                 else
-                    return  Session[Constants.UserObjectKey] as IUserInfo;
+                    return  Session[AppConstants.SessionVariables.UserObjectKey] as IUserInfo;
             }
             set
             {
-                Session[Constants.UserObjectKey] = value;
+                Session[AppConstants.SessionVariables.UserObjectKey] = value;
             }
         }
     }

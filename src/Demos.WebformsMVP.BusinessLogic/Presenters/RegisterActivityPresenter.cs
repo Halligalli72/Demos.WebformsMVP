@@ -8,7 +8,7 @@ namespace Demos.WebformsMVP.BusinessLogic.Presenters
         private IRegisterActivityView _view;
         private IActivityService _activityService;
         private IActivityTypeService _activityTypeService;
-        private const int _defaultDuration = 30;
+        private const int _defaultDuration = DomainConstants.DefaultActivityDuration;
 
         public RegisterActivityPresenter(IRegisterActivityView view, IActivityService activitySvc, IActivityTypeService activityTypeSvc)
         {
