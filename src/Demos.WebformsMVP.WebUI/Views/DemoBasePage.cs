@@ -30,10 +30,10 @@ namespace Demos.WebformsMVP.WebUI.Views
         {
             get
             {
-                if (Session[AppConstants.SessionVariables.UserObjectKey] == null)
-                    return Factory.CreateUserInfo();
+                if (Session[AppConstants.SessionVariables.UserObjectKey] != null)
+                    return Session[AppConstants.SessionVariables.UserObjectKey] as IUserInfo; //Already "logged in"
                 else
-                    return  Session[AppConstants.SessionVariables.UserObjectKey] as IUserInfo;
+                    return Factory.CreateUserInfo();
             }
             set
             {

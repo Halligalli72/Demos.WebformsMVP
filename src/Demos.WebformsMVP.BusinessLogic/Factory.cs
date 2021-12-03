@@ -9,6 +9,7 @@ namespace Demos.WebformsMVP.BusinessLogic
         {
             return new UserInfo();
         }
+
         public static IActivity CreateActivity()
         {
             return new Activity();
