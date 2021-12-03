@@ -1,5 +1,5 @@
-﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
-using Demos.WebformsMVP.BusinessLogic.Presenters;
+﻿using Demos.WebformsMVP.BusinessLogic.Presenters;
+using Demos.WebformsMVP.BusinessLogic.Views;
 using System;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;

@@ -1,11 +1,12 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
+using Demos.WebformsMVP.BusinessLogic.Views;
 
 namespace Demos.WebformsMVP.BusinessLogic.Presenters
 {
     public class UserProfilePresenter
     {
-        private IUserProfileView _view;
-        private IUserInfoService _service;
+        private readonly IUserProfileView _view;
+        private readonly IUserInfoService _service;
 
         public UserProfilePresenter(IUserProfileView view, IUserInfoService userInfoSvc)
         {

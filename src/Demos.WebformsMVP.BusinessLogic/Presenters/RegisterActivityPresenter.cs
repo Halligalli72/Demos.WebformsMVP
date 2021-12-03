@@ -1,13 +1,14 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
+using Demos.WebformsMVP.BusinessLogic.Views;
 using System;
 
 namespace Demos.WebformsMVP.BusinessLogic.Presenters
 {
     public class RegisterActivityPresenter
     {
-        private IRegisterActivityView _view;
-        private IActivityService _activityService;
-        private IActivityTypeService _activityTypeService;
+        private readonly IRegisterActivityView _view;
+        private readonly IActivityService _activityService;
+        private readonly IActivityTypeService _activityTypeService;
         private const int _defaultDuration = DomainConstants.DefaultActivityDuration;
 
         public RegisterActivityPresenter(IRegisterActivityView view, IActivityService activitySvc, IActivityTypeService activityTypeSvc)

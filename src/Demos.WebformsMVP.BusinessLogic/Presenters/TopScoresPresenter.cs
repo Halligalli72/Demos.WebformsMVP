@@ -1,11 +1,12 @@
 ﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
+using Demos.WebformsMVP.BusinessLogic.Views;
 
 namespace Demos.WebformsMVP.BusinessLogic.Presenters
 {
     public class TopScoresPresenter
     {
-        private ITopScoresView _view;
-        private IActivityService _service;
+        private readonly ITopScoresView _view;
+        private readonly IActivityService _service;
 
         public TopScoresPresenter(ITopScoresView view, IActivityService activitySvc)
         {

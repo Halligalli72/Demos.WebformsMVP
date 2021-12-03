@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Demos.WebformsMVP.BusinessLogic.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Demos.WebformsMVP.BusinessLogic.Interfaces
+namespace Demos.WebformsMVP.BusinessLogic.Views
 {
     public interface IActivityListView
     {
