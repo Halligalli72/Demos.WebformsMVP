@@ -228,15 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\WebUI.css" />
+    <Content Include="favicon.ico" />
     <Content Include="packages.config" />
     <Content Include="Master\WebUI.Master" />
-    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.2.1.js" />
-    <Content Include="Scripts\jquery-3.2.1.min.js" />
-    <Content Include="Scripts\jquery-3.2.1.slim.js" />
-    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
-    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.2.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -331,7 +325,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\locales\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Demos.WebformsMVP.BusinessLogic\Demos.WebformsMVP.BusinessLogic.csproj">

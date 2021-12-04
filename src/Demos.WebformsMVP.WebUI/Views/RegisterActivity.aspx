@@ -16,11 +16,11 @@
                 <tr>
                     <td>Date:</td>
                     <td>
-                        <div class="input-group date" data-provide="datepicker">
+                        <div class="input-group date" id="mydatetimepicker">
                             <asp:TextBox ID="txtActivityDate" CssClass="form-control" runat="server"></asp:TextBox>
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
                         </div>
                     </td>
                 </tr>
@@ -54,11 +54,12 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
     <script type="text/javascript">
-        //Thing to do when document is ready (DOM complete)
         $(document).ready(function () {
-            //Setup datepicker 
-            $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-            $('.datepicker').datepicker();
+            console.log('ready');
+            $('#mydatetimepicker').datepicker({
+                locale: 'sv',
+                format: 'yyyy-mm-dd'
+            });
         });
     </script>
 </asp:Content>
