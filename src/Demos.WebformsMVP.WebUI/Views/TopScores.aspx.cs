@@ -4,7 +4,7 @@ using System;
 
 namespace Demos.WebformsMVP.WebUI.Views
 {
-    public partial class TopScores : DemoBasePage, ITopScoresView
+    public partial class TopScores : BaseView, ITopScoresView
     {
         private TopScoresPresenter _presenter;
 

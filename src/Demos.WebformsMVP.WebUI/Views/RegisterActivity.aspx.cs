@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Demos.WebformsMVP.WebUI.Views
 {
-    public partial class RegisterActivity : DemoBasePage, IRegisterActivityView
+    public partial class RegisterActivity : BaseView, IRegisterActivityView
     {
         private RegisterActivityPresenter _presenter;
 

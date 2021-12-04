@@ -4,7 +4,7 @@ using System;
 
 namespace Demos.WebformsMVP.WebUI.Views
 {
-    public partial class StartPage : DemoBasePage, IStartPageView
+    public partial class StartPage : BaseView, IStartPageView
     {
         private StartPagePresenter _presenter;
 

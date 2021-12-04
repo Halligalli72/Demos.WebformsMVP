@@ -9,7 +9,7 @@ namespace Demos.WebformsMVP.WebUI.Views
     /// Autofac DI Reference: https://autofac.readthedocs.io/en/latest/integration/webforms.html?highlight=web%20forms#web-forms
     /// </summary>
     [InjectProperties]
-    public class DemoBasePage : System.Web.UI.Page
+    public class BaseView : System.Web.UI.Page
     {
         /// <summary>
         /// User info service (injected with Autofac)
