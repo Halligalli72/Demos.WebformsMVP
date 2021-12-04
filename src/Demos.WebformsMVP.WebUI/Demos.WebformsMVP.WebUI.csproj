@@ -277,7 +277,7 @@
     <Compile Include="Views\ActivityList.aspx.designer.cs">
       <DependentUpon>ActivityList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\BaseView.cs">
+    <Compile Include="Views\xBaseView.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Login.aspx.cs">
