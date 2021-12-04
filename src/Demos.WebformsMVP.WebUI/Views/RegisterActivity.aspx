@@ -16,11 +16,11 @@
                 <tr>
                     <td>Date:</td>
                     <td>
-                        <div class="input-group date" data-provide="datepicker">
+                        <div class="input-group date" id="mydatetimepicker">
                             <asp:TextBox ID="txtActivityDate" CssClass="form-control" runat="server"></asp:TextBox>
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
                         </div>
                     </td>
                 </tr>
@@ -53,12 +53,17 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script type="text/javascript">
-        //Thing to do when document is ready (DOM complete)
         $(document).ready(function () {
-            //Setup datepicker 
-            $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-            $('.datepicker').datepicker();
+            $('#mydatetimepicker').datepicker({
+                language: 'en',
+                weekStart: 1,
+                calendarWeeks: true,
+                format: 'yyyy-mm-dd',
+                autoclose: true
+            });
         });
     </script>
 </asp:Content>
