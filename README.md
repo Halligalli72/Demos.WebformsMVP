@@ -17,6 +17,6 @@ Kontrollera innehållet i databasen med följande SQL:
 
 
 Hur dependency injection (DI) är uppsatt i webbapplikationen (ASP.NET Web Forms):
-* AutoFac används som DI ramverk.
+* AutoFac används som DI ramverk. Sedan används även Autofac.Web för att integrera med ASP.NET Web Forms.
 * DI konfigureras i "global.asax.cs"
-* Alla Web Forms vyer ärver från "DemoBasePage.cs", där applikationstjänsterna injectas m h a AutoFac attributet [InjectProperties]
+* Alla Web Forms vyer ärver från "BasePage.cs", där applikationstjänsterna injectas m h a AutoFac attributet [InjectProperties]
