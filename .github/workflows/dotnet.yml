@@ -1,4 +1,4 @@
-name: .NET
+name: Build ASP.NET 4.7.2
 
 on:
   push:
