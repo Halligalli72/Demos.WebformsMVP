@@ -2,14 +2,14 @@
 using Demos.WebformsMVP.BusinessLogic;
 using Demos.WebformsMVP.BusinessLogic.Interfaces;
 
-namespace Demos.WebformsMVP.WebUI.Views
+namespace Demos.WebformsMVP.WebUI
 {
     /// <summary>
-    /// Autofac DI Container is setup in Global.asax.cs
+    /// Autofac DI Container is setup in Global.asax.cs and then autoinjected here vith attribute [InjectProperties]
     /// Autofac DI Reference: https://autofac.readthedocs.io/en/latest/integration/webforms.html?highlight=web%20forms#web-forms
     /// </summary>
     [InjectProperties]
-    public class BaseView : System.Web.UI.Page
+    public class BasePage : System.Web.UI.Page
     {
         /// <summary>
         /// User info service (injected with Autofac)

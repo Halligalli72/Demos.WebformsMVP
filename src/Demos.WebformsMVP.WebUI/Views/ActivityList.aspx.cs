@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Demos.WebformsMVP.WebUI.Views
 {
-    public partial class ActivityList : BaseView, IActivityListView
+    public partial class ActivityList : BasePage, IActivityListView
     {
         private ActivityListPresenter _presenter;
 

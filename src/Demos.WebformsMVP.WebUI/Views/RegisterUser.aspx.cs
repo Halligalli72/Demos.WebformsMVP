@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Demos.WebformsMVP.WebUI.Views
 {
-    public partial class RegisterUser : BaseView, IRegisterUserView
+    public partial class RegisterUser : BasePage, IRegisterUserView
     {
         private RegisterUserPresenter _presenter;
 

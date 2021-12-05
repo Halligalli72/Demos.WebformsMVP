@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 
 namespace Demos.WebformsMVP.WebUI.Views
 {
-    public partial class UserProfile : BaseView, IUserProfileView
+    public partial class UserProfile : BasePage, IUserProfileView
     {
         private UserProfilePresenter _presenter;
 

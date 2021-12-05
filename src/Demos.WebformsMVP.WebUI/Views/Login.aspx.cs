@@ -5,7 +5,7 @@ using System;
 
 namespace Demos.WebformsMVP.WebUI.Views
 {
-    public partial class Login : BaseView, ILoginView
+    public partial class Login : BasePage, ILoginView
     {
         private LoginPresenter _presenter;
 
