@@ -87,40 +87,46 @@ namespace Demos.WebformsMVP.BusinessLogic
 
         public static DataAccess.Entities.UserProfile TranslateToDatabaseObject(IUserInfo bo)
         {
-            DataAccess.Entities.UserProfile dbObject = new DataAccess.Entities.UserProfile();
-            dbObject.UserProfileId = bo.ID;
-            dbObject.UserName = bo.UserName;
-            dbObject.Name = bo.Name;
-            dbObject.Team = bo.TeamName;
-            dbObject.Department = bo.Department;
-            dbObject.IsPublic = bo.ResultsArePublic;
-            dbObject.Created = bo.Created;
-            dbObject.Updated = bo.Updated;
+            DataAccess.Entities.UserProfile dbObject = new DataAccess.Entities.UserProfile
+            {
+                UserProfileId = bo.ID,
+                UserName = bo.UserName,
+                Name = bo.Name,
+                Team = bo.TeamName,
+                Department = bo.Department,
+                IsPublic = bo.ResultsArePublic,
+                Created = bo.Created,
+                Updated = bo.Updated
+            };
             return dbObject;
         }
 
         public static DataAccess.Entities.ActivityType TranslateToDatabaseObject(IActivityType bo) 
         {
-            DataAccess.Entities.ActivityType dbObject = new DataAccess.Entities.ActivityType();
-            dbObject.Name = bo.ActivityName;
-            dbObject.StepValue = bo.Steps;
-            dbObject.IsActivated = bo.IsActivated;
-            dbObject.Created = bo.Created;
-            dbObject.Updated = bo.Updated;
+            DataAccess.Entities.ActivityType dbObject = new DataAccess.Entities.ActivityType
+            {
+                Name = bo.ActivityName,
+                StepValue = bo.Steps,
+                IsActivated = bo.IsActivated,
+                Created = bo.Created,
+                Updated = bo.Updated
+            };
             return dbObject;
         }
 
         public static DataAccess.Entities.Activity TranslateToDatabaseObject(IActivity bo)
         {
-            DataAccess.Entities.Activity dbObject = new DataAccess.Entities.Activity();
-            dbObject.ActivityDate = bo.ActivityDate;
-            dbObject.ActivityTypeId = bo.ActivityTypeId;
-            dbObject.OtherActivity = bo.OtherActivity;
-            dbObject.Duration = bo.Duration;
-            dbObject.UserProfileId = bo.UserProfileId;
-            dbObject.Score = bo.Score;
-            dbObject.Created = bo.Created;
-            dbObject.Updated = bo.Updated;
+            DataAccess.Entities.Activity dbObject = new DataAccess.Entities.Activity
+            {
+                ActivityDate = bo.ActivityDate,
+                ActivityTypeId = bo.ActivityTypeId,
+                OtherActivity = bo.OtherActivity,
+                Duration = bo.Duration,
+                UserProfileId = bo.UserProfileId,
+                Score = bo.Score,
+                Created = bo.Created,
+                Updated = bo.Updated
+            };
             return dbObject;
         }
 
