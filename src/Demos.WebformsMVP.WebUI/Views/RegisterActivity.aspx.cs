@@ -103,7 +103,7 @@ namespace Demos.WebformsMVP.WebUI.Views
 
         public void RedirectAfterSaveOK()
         {
-            Response.Redirect("ActivityList.aspx?selection=own", false);
+            Response.Redirect("~/Views/ActivityList.aspx?selection=own", false);
         }
 
         public void InitAvailableActivityTypes(IList<IActivityType> types)
@@ -127,7 +127,7 @@ namespace Demos.WebformsMVP.WebUI.Views
 
         public void RedirectToLoginView()
         {
-            Response.Redirect("Login.aspx", true);
+            Response.Redirect("~/Views/Login.aspx", true);
         }
 
 

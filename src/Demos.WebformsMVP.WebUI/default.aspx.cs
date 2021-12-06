@@ -6,7 +6,7 @@ namespace Demos.WebformsMVP.WebUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("Views/StartPage.aspx");
+            Response.Redirect("~/Views/StartPage.aspx");
         }
     }
 }

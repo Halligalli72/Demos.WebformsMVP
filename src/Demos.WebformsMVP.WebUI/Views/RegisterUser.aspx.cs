@@ -109,7 +109,7 @@ namespace Demos.WebformsMVP.WebUI.Views
 
         public void RedirectToProfilePage()
         {
-            Response.Redirect("UserProfile.aspx", true);
+            Response.Redirect("~/Views/UserProfile.aspx", true);
         }
 
         #endregion

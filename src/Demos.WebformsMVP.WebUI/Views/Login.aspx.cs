@@ -67,12 +67,12 @@ namespace Demos.WebformsMVP.WebUI.Views
 
         public void RedirectLoginOK()
         {
-            Response.Redirect("RegisterActivity.aspx", true);
+            Response.Redirect("~/Views/RegisterActivity.aspx", true);
         }
 
         public void RedirectAlreadyLoggedIn()
         {
-            Response.Redirect("UserProfile.aspx", true);
+            Response.Redirect("~/Views/UserProfile.aspx", true);
         }
         #endregion
     }

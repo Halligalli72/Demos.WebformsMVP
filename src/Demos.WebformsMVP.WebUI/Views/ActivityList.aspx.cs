@@ -89,7 +89,7 @@ namespace Demos.WebformsMVP.WebUI.Views
 
         public void RedirectToLoginView()
         {
-            Response.Redirect("Login.aspx", true);
+            Response.Redirect("~/Views/Login.aspx", true);
         }
 
         #endregion

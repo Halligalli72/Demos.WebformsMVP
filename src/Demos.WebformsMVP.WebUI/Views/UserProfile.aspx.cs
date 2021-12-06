@@ -48,7 +48,7 @@ namespace Demos.WebformsMVP.WebUI.Views
             {
                 LoggedInUser = null; //reset
                 _presenter.HandleLogoutUser();
-                Response.Redirect("StartPage.aspx", true);
+                Response.Redirect("~/Views/StartPage.aspx", true);
             }
             catch (Exception ex)
             {
@@ -123,7 +123,7 @@ namespace Demos.WebformsMVP.WebUI.Views
 
         public void RedirectToLoginPage()
         {
-            Response.Redirect("Login.aspx", true);
+            Response.Redirect("~/Views/Login.aspx", true);
         }
 
         public void DisplayUserProfileInformation()
@@ -151,7 +151,7 @@ namespace Demos.WebformsMVP.WebUI.Views
 
         public void RedirectAfterUpdateOK()
         {
-            Response.Redirect("UserProfile.aspx", true);
+            Response.Redirect("~/Views/UserProfile.aspx", true);
         }
 
         public void InitAvailableTeams(IList<string> teamNames)
