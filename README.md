@@ -1,7 +1,7 @@
-# Demos.WebformsMVP: Demonstrates the MVP pattern applied in a legacy ASP.Net Web Forms application
+# Demos.WebformsMVP: Demonstrates the MVP pattern applied in a legacy ASP.NET Web Forms application
 
-The solution demonstrates how a MVP pattern (Model-View-Presenter) can be applied to an old ASP.Net Web Forms web project.  
-This way, the code get a better structure, gets more testable and will be prepared for another view engine than ASP.Net Web Forms.
+The solution demonstrates how a MVP pattern (Model-View-Presenter) can be applied to a legacy ASP.NET Web Forms web project.  
+This way, the code get a better structure, gets more testable and will be prepared for another view engine than ASP.NET Web Forms.
 
 Get started:  
 1. Install SQL Server Express (instance: .\SQLEXPRESS)  
