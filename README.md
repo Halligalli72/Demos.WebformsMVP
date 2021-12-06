@@ -1,22 +1,22 @@
-# Demos.WebformsMVP: Demonstrerar MVP pattern med ASP.Net Web Forms
+# Demos.WebformsMVP: Demonstrates the MVP pattern applied in a legacy ASP.Net Web Forms application
 
-Exemplet demonstrerar hur ett MVP pattern (Model-View-Presenter) kan appliceras i ett gammalt ASP.Net Web Forms webbprojekt.  
-På detta sätt blir koden mer strukturerad, får bättre testbarhet och förbereds för framtida byte av vymotor.
+The solution demonstrates how a MVP pattern (Model-View-Presenter) can be applied to an old ASP.Net Web Forms web project.  
+This way, the code get a better structure, gets more testable and will be prepared for another view engine than ASP.Net Web Forms.
 
-Komma igång:  
-1. Installera SQL Server Express (instans: .\SQLEXPRESS)  
-2. Skapa en tom databas som heter 'WebformsMVPDemo' (samma som namnet i web.config)  
-3. Kör scripten under 'Demos.WebformsMVP.DataAccess\Database' i SQL Server Management Studio för att skapa tabeller och fylla med data.  
-4. Bygg solution och kör enhetstesterna.  
-5. Sätt projektet 'Demos.WebformsMVP.WebUI' som startup och starta debug.  
+Get started:  
+1. Install SQL Server Express (instance: .\SQLEXPRESS)  
+2. Create an empty database named 'WebformsMVPDemo' (same as Database property in web.config)  
+3. Run the sql scripts in 'Demos.WebformsMVP.DataAccess\Database' with SQL Server Management Studio to create tables and fill then with sample data.  
+4. Build the solution and run the unit tests.  
+5. Set the project 'Demos.WebformsMVP.WebUI' as startup project and start debug.  
 
-Kontrollera innehållet i databasen med följande SQL:  
+Inspect the database content with the following SQL queries:  
 * SELECT * FROM UserProfile  
 * SELECT * FROM Activity  
 * SELECT * FROM ActivityType  
 
 
-Hur dependency injection (DI) är uppsatt i webbapplikationen (ASP.NET Web Forms):
-* AutoFac används som DI ramverk. Sedan används även Autofac.Web för att integrera med ASP.NET Web Forms.
-* DI konfigureras i "global.asax.cs"
-* Alla Web Forms vyer ärver från "BasePage.cs", där applikationstjänsterna injectas m h a AutoFac attributet [InjectProperties]
+How dependency injection (DI) is configured in the web application (ASP.NET Web Forms):
+* AutoFac is used as DI framework. Also Autofac.Web is used to integrate better with ASP.NET Web Forms.
+* DI is configured in "global.asax.cs"
+* All Web Forms views can inherit from base class "BasePage.cs", where the application services are injected with the AutoFac attribute [InjectProperties]
