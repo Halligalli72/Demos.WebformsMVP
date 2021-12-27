@@ -29,4 +29,4 @@ jobs:
         dotnet-version: '3.1.x'
         
     - name: Test
-      run: dotnet test
+      run: dotnet test ~/tests/Demos.WebformsMVP.BusinessLogic.Test/Demos.WebformsMVP.BusinessLogic.Test.csproj
