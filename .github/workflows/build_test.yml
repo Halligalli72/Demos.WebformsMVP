@@ -16,10 +16,12 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
 
-    - name: Restore Packages
+    - name: Restore Nuget Packages
       run: nuget restore Demos.WebformsMVP.sln
       
-    - name: Build Solution
+    - name: Build
       run: |
         msbuild.exe Demos.WebformsMVP.sln /nologo /nr:false /p:DeployOnBuild=false /p:platform="Any CPU" /p:configuration="Release"
 
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
