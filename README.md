@@ -1,3 +1,4 @@
+[![Build and test](https://github.com/Halligalli72/Demos.WebformsMVP/actions/workflows/build_test.yml/badge.svg?branch=master)](https://github.com/Halligalli72/Demos.WebformsMVP/actions/workflows/build_test.yml)
 # Demos.WebformsMVP: Demonstrates the MVP pattern applied in a legacy ASP.NET Web Forms application
 
 The solution demonstrates how a MVP pattern (Model-View-Presenter) can be applied to a legacy ASP.NET Web Forms web project.  
